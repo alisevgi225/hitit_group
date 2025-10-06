@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hitit Group - İnşaat, Mobilya & Otomotiv</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             box-sizing: border-box;
         }
-        
+
         :root {
             --antrasit: #2F2F2F;
             --beyaz: #FFFFFF;
             --altin: #D4AF37;
         }
-        
+
         .hero-gradient {
             background: linear-gradient(135deg, var(--antrasit) 0%, var(--antrasit) 100%);
         }
@@ -28,62 +31,81 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
             background: rgba(47, 47, 47, 0.55);
         }
-        .hero > .container { position: relative; z-index: 1; }
-        
+
+        .hero>.container {
+            position: relative;
+            z-index: 1;
+        }
+
         .gold-gradient {
             background: linear-gradient(135deg, var(--altin) 0%, var(--altin) 100%);
         }
-        
+
         .service-card {
             transition: all 0.4s ease;
             background: var(--beyaz);
             border: 2px solid transparent;
         }
-        
+
         .service-card:hover {
             transform: translateY(-15px);
             box-shadow: 0 25px 50px rgba(212, 175, 55, 0.2);
             border-color: var(--altin);
         }
-        
+
         .fade-in {
             animation: fadeIn 1s ease-in;
         }
-        
+
         .slide-in {
             animation: slideIn 0.8s ease-out;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        
+
         .page {
             min-height: 100vh;
             display: none;
         }
-        
+
         .page.active {
             display: block;
         }
-        
+
         .nav-link {
             position: relative;
             overflow: hidden;
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -94,11 +116,11 @@
             background: var(--altin);
             transition: left 0.3s ease;
         }
-        
+
         .nav-link:hover::after {
             left: 0;
         }
-        
+
         .image-placeholder {
             background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
             border: 3px dashed var(--altin);
@@ -111,26 +133,48 @@
             border-radius: 15px;
             min-height: 300px;
         }
-        
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-        
+
         .project-card {
             background: white;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
-        
+
         .project-card:hover {
             transform: translateY(-10px);
         }
+
+        /* Altın çerçeve ve parlama animasyonu */
+        .gold-border {
+            border: 2px solid var(--altin);
+        }
+
+        .glow-anim {
+            animation: glowPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 rgba(212, 175, 55, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 18px rgba(212, 175, 55, 0.55), 0 0 36px rgba(212, 175, 55, 0.3);
+            }
+        }
     </style>
 </head>
+
 <body class="font-sans" style="background-color: var(--beyaz);">
     <!-- Header -->
     <header class="fixed w-full top-0 z-50 transition-all duration-300" style="background-color: var(--antrasit);">
@@ -138,30 +182,45 @@
             <div class="flex justify-between items-center">
                 <div class="text-3xl font-bold" style="color: var(--altin);">Hitit GROUP</div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#" data-page="home" onclick="showPage('home'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Ana Sayfa</a>
-                    <a href="#" onclick="scrollToSection('hizmetlerimiz'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Hizmetlerimiz</a>
-                    <a href="#" onclick="scrollToSection('neden-biz'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Neden Biz</a>
-                    <a href="#" onclick="scrollToSection('biz-kimiz'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Biz Kimiz</a>
-              <!--      <a href="#" data-page="construction" onclick="showPage('construction'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">İnşaat</a>
+                    <a href="#" data-page="home" onclick="showPage('home'); return false;"
+                        class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Ana
+                        Sayfa</a>
+                    <a href="#" onclick="scrollToSection('hizmetlerimiz'); return false;"
+                        class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Hizmetlerimiz</a>
+                    <a href="#" onclick="scrollToSection('neden-biz'); return false;"
+                        class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Neden
+                        Biz</a>
+                    <a href="#" onclick="scrollToSection('biz-kimiz'); return false;"
+                        class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Biz
+                        Kimiz</a>
+                    <!--      <a href="#" data-page="construction" onclick="showPage('construction'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">İnşaat</a>
                     <a href="#" data-page="furniture" onclick="showPage('furniture'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Mobilya</a>
                     <a href="#" data-page="automotive" onclick="showPage('automotive'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Otomotiv</a> -->
-                    <a href="#" onclick="scrollToSection('iletisim'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">İletişim</a>
+                    <a href="#" onclick="scrollToSection('iletisim'); return false;"
+                        class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">İletişim</a>
                 </div>
-                <button class="md:hidden text-white" onclick="toggleMenu()" aria-controls="mobile-menu" aria-expanded="false">
+                <button class="md:hidden text-white" onclick="toggleMenu()" aria-controls="mobile-menu"
+                    aria-expanded="false">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
             <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-                <a href="#" data-page="home" onclick="showPage('home'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Ana Sayfa</a>
-                <a href="#" onclick="scrollToSection('hizmetlerimiz'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Hizmetlerimiz</a>
-                <a href="#" onclick="scrollToSection('neden-biz'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Neden Biz</a>
-                <a href="#" onclick="scrollToSection('biz-kimiz'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Biz Kimiz</a>
-        <!--        <a href="#" data-page="construction" onclick="showPage('construction'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">İnşaat</a>
+                <a href="#" data-page="home" onclick="showPage('home'); return false;"
+                    class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Ana Sayfa</a>
+                <a href="#" onclick="scrollToSection('hizmetlerimiz'); return false;"
+                    class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Hizmetlerimiz</a>
+                <a href="#" onclick="scrollToSection('neden-biz'); return false;"
+                    class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Neden Biz</a>
+                <a href="#" onclick="scrollToSection('biz-kimiz'); return false;"
+                    class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Biz Kimiz</a>
+                <!--        <a href="#" data-page="construction" onclick="showPage('construction'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">İnşaat</a>
                 <a href="#" data-page="furniture" onclick="showPage('furniture'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Mobilya</a>
                 <a href="#" data-page="automotive" onclick="showPage('automotive'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Otomotiv</a> -->
-                <a href="#" onclick="scrollToSection('iletisim'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">İletişim</a>
+                <a href="#" onclick="scrollToSection('iletisim'); return false;"
+                    class="nav-link block text-white hover:text-[color:var(--altin)] py-2">İletişim</a>
             </div>
         </nav>
     </header>
@@ -173,13 +232,17 @@
             <div class="container mx-auto px-6 text-center">
                 <div class="fade-in">
                     <h1 class="text-6xl md:text-8xl font-bold mb-6" style="color: var(--altin);">HİTİT GROUP</h1>
-                    <p class="text-xl md:text-3xl mb-8 max-w-4xl mx-auto font-light">Güven, Kalite ve Mükemmellik ile İnşaat, Mobilya ve Otomotiv Sektörlerinde Lider</p>
+                    <p class="text-xl md:text-3xl mb-8 max-w-4xl mx-auto font-light">Güven, Kalite ve Mükemmellik ile
+                        İnşaat, Mobilya ve Otomotiv Sektörlerinde Lider</p>
                     <div class="flex flex-col md:flex-row gap-6 justify-center mt-12">
-                        <button onclick="showPage('construction')" class="gold-gradient text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition duration-300 shadow-2xl">Projelerimizi Keşfedin</button>
-                        <button onclick="scrollToSection('iletisim')" class="border-2 px-10 py-5 rounded-full font-bold text-lg transition duration-300"
-                                style="border-color: var(--altin); color: var(--altin);"
-                                onmouseover="this.style.backgroundColor=getComputedStyle(document.documentElement).getPropertyValue('--altin'); this.style.color='#000';"
-                                onmouseout="this.style.backgroundColor='transparent'; this.style.color=getComputedStyle(document.documentElement).getPropertyValue('--altin');">
+                        <button onclick="showPage('construction')"
+                            class="gold-gradient text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition duration-300 shadow-2xl">Projelerimizi
+                            Keşfedin</button>
+                        <button onclick="scrollToSection('iletisim')"
+                            class="border-2 px-10 py-5 rounded-full font-bold text-lg transition duration-300"
+                            style="border-color: var(--altin); color: var(--altin);"
+                            onmouseover="this.style.backgroundColor=getComputedStyle(document.documentElement).getPropertyValue('--altin'); this.style.color='#000';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color=getComputedStyle(document.documentElement).getPropertyValue('--altin');">
                             Hemen İletişime Geçin
                         </button>
                     </div>
@@ -193,28 +256,34 @@
                 <div class="text-center mb-12">
                     <h2 class="text-5xl md:text-6xl font-bold" style="color: var(--antrasit);">Hizmet Alanlarımız</h2>
                 </div>
-                
+
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- İnşaat -->
-                    <div class="service-card rounded-3xl p-4 md:p-6 shadow-2xl cursor-pointer" onclick="showPage('construction')">
+                    <div class="service-card rounded-3xl p-4 md:p-6 shadow-2xl cursor-pointer"
+                        onclick="showPage('construction')">
                         <div class="mb-6">
-                            <img src="assets/img/construction.jpg" alt="İnşaat" class="w-full rounded-2xl object-cover" style="height: 520px;" />
+                            <img src="assets/img/construction.jpg" alt="İnşaat" class="w-full rounded-2xl object-cover"
+                                style="height: 520px;" />
                         </div>
                         <h3 class="text-3xl font-bold text-center" style="color: var(--altin);">İnşaat</h3>
                     </div>
 
                     <!-- Mobilya -->
-                    <div class="service-card rounded-3xl p-4 md:p-6 shadow-2xl cursor-pointer" onclick="showPage('furniture')">
+                    <div class="service-card rounded-3xl p-4 md:p-6 shadow-2xl cursor-pointer"
+                        onclick="showPage('furniture')">
                         <div class="mb-6">
-                            <img src="assets/img/mobilya.jpg" alt="Mobilya" class="w-full rounded-2xl object-cover" style="height: 520px;" />
+                            <img src="assets/img/mobilya.jpg" alt="Mobilya" class="w-full rounded-2xl object-cover"
+                                style="height: 520px;" />
                         </div>
                         <h3 class="text-3xl font-bold text-center" style="color: var(--altin);">Mobilya</h3>
                     </div>
 
                     <!-- Otomotiv -->
-                    <div class="service-card rounded-3xl p-4 md:p-6 shadow-2xl cursor-pointer" onclick="showPage('automotive')">
+                    <div class="service-card rounded-3xl p-4 md:p-6 shadow-2xl cursor-pointer"
+                        onclick="showPage('automotive')">
                         <div class="mb-6">
-                            <img src="assets/img/otomotiv.jpg" alt="Otomotiv" class="w-full rounded-2xl object-cover" style="height: 520px;" />
+                            <img src="assets/img/otomotiv.jpg" alt="Otomotiv" class="w-full rounded-2xl object-cover"
+                                style="height: 520px;" />
                         </div>
                         <h3 class="text-3xl font-bold text-center" style="color: var(--altin);">Otomotiv</h3>
                     </div>
@@ -227,32 +296,54 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-20">
                     <h2 class="text-5xl font-bold mb-6" style="color: var(--antrasit);">Neden Hitit Group?</h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">15 yıllık deneyimimiz ve müşteri odaklı yaklaşımımızla sektörde fark yaratıyoruz</p>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hitit Group olarak, inşaat, mobilya ve otomotiv
+                        sektörlerinde 15 yılı aşkın tecrübemizle güvenilir ve kaliteli çözümler sunuyoruz. Her projede
+                        müşteri memnuniyetini ön planda tutuyor, sektörde fark yaratan profesyonel yaklaşımlar
+                        sergiliyoruz.</p>
                 </div>
-                
+
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-lg transition duration-300">
-                        <div class="text-5xl mb-4" style="color: var(--altin);">🏆</div>
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--antrasit);">Kalite Garantisi</h3>
-                        <p class="text-gray-600">En kaliteli malzemeler ve işçilik garantisi ile projelerinizi teslim ediyoruz.</p>
+                    <div
+                        class="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-lg transition duration-300 gold-border glow-anim">
+                        <div class="text-5xl mb-4" style="color: var(--altin);"><i class="fa-solid fa-building"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--antrasit);">Güvenilir İnşaat Çözümleri
+                        </h3>
+                        <p class="text-gray-600">Her yapıyı yalnızca inşa etmekle kalmıyor, aynı zamanda yaşam
+                            alanlarınıza değer katıyoruz.
+                            Kaliteli malzeme, modern tasarım ve sağlam temellerle projelerinizi güvenle teslim ediyoruz.
+                        </p>
                     </div>
-                    
-                    <div class="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-lg transition duration-300">
-                        <div class="text-5xl mb-4" style="color: var(--altin);">⏰</div>
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--antrasit);">Zamanında Teslimat</h3>
-                        <p class="text-gray-600">Belirlenen sürelerde projelerinizi eksiksiz olarak tamamlıyoruz.</p>
+
+                    <div
+                        class="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-lg transition duration-300 gold-border glow-anim">
+                        <div class="text-5xl mb-4" style="color: var(--altin);"><i class="fa-solid fa-couch"></i></div>
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--antrasit);">Estetik ve Fonksiyonel
+                            Mobilya</h3>
+                        <p class="text-gray-600">Mekanlarınızı güzelleştiren ve kullanım konforunu artıran çözümler
+                            sunuyoruz.
+                            Her detayda estetik ve işlevselliği bir araya getirerek, uzun ömürlü ve şık tasarımlar
+                            üretiyoruz.</p>
                     </div>
-                    
-                    <div class="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-lg transition duration-300">
-                        <div class="text-5xl mb-4" style="color: var(--altin);">👥</div>
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--antrasit);">Uzman Ekip</h3>
-                        <p class="text-gray-600">Alanında uzman, deneyimli ve sertifikalı ekibimizle hizmet veriyoruz.</p>
+
+                    <div
+                        class="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-lg transition duration-300 gold-border glow-anim">
+                        <div class="text-5xl mb-4" style="color: var(--altin);"><i class="fa-solid fa-car"></i></div>
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--antrasit);">Performans ve Güvenlik
+                            Odaklı Otomotiv</h3>
+                        <p class="text-gray-600">Sürüş keyfinizi ve güvenliğinizi artıran çözümler sunuyoruz.
+                            Her araç ve proje, kalite standartlarımızla kontrol edilerek, kullanıcıya sorunsuz ve
+                            güvenli bir deneyim sağlıyor.</p>
                     </div>
-                    
-                    <div class="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-lg transition duration-300">
-                        <div class="text-5xl mb-4" style="color: var(--altin);">💰</div>
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--antrasit);">Uygun Fiyat</h3>
-                        <p class="text-gray-600">Kaliteli hizmeti en uygun fiyatlarla sunarak bütçenize uygun çözümler üretiyoruz.</p>
+
+                    <div
+                        class="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-lg transition duration-300 gold-border glow-anim">
+                        <div class="text-5xl mb-4" style="color: var(--altin);"><i class="fa-solid fa-clock"></i></div>
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--antrasit);">Zamanında Teslimat & Değer
+                            Odaklı Yaklaşım</h3>
+                        <p class="text-gray-600">Planlanan sürelerde projelerinizi tamamlıyor, yatırımınıza değer
+                            katıyoruz.
+                            Kaliteyi uygun maliyetle birleştirerek, hem güven hem de ekonomik fayda sağlıyoruz.</p>
                     </div>
                 </div>
             </div>
@@ -264,9 +355,13 @@
                 <div class="grid md:grid-cols-2 gap-16 items-center">
                     <div>
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Şirket Tarihçemiz</h2>
-                        <p class="text-lg text-gray-600 mb-6">Hitit Group, 2009 yılında küçük bir inşaat firması olarak kuruldu. Yıllar içinde müşteri memnuniyeti odaklı yaklaşımımız ve kaliteli hizmet anlayışımızla büyüyerek mobilya ve otomotiv sektörlerine de adım attık.</p>
-                        <p class="text-lg text-gray-600 mb-8">Bugün 3 farklı sektörde, 50+ çalışanımız ve 500+ tamamlanmış projemizle sektörün önde gelen firmalarından biri haline geldik. Müşterilerimizin güveni ve memnuniyeti bizim en büyük başarımızdır.</p>
-                        
+                        <p class="text-lg text-gray-600 mb-6">Hitit Group, 2009 yılında küçük bir inşaat firması olarak
+                            kuruldu. Yıllar içinde müşteri memnuniyeti odaklı yaklaşımımız ve kaliteli hizmet
+                            anlayışımızla büyüyerek mobilya ve otomotiv sektörlerine de adım attık.</p>
+                        <p class="text-lg text-gray-600 mb-8">Bugün 3 farklı sektörde, 50+ çalışanımız ve 500+
+                            tamamlanmış projemizle sektörün önde gelen firmalarından biri haline geldik.
+                            Müşterilerimizin güveni ve memnuniyeti bizim en büyük başarımızdır.</p>
+
                         <div class="space-y-4">
                             <div class="flex items-center">
                                 <div class="w-4 h-4 rounded-full mr-4" style="background-color: var(--altin);"></div>
@@ -286,9 +381,10 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="text-center">
-                        <img src="assets/img/kurulus.jpg" alt="Şirket tarihçesi" class="w-full h-96 rounded-2xl object-cover" />
+                        <img src="assets/img/kurulus.jpg" alt="Şirket tarihçesi"
+                            class="w-full h-96 rounded-2xl object-cover" />
                     </div>
                 </div>
             </div>
@@ -322,7 +418,8 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-8">
                     <h2 class="text-4xl font-bold mb-4" style="color: var(--altin);">İletişim</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Projeleriniz için bizimle iletişime geçin. Size en uygun çözümü birlikte bulalım.</p>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Projeleriniz için bizimle iletişime geçin. Size
+                        en uygun çözümü birlikte bulalım.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
@@ -332,7 +429,8 @@
                                 <div class="text-2xl mr-4" style="color: var(--altin);">📍</div>
                                 <div>
                                     <div class="font-bold text-lg mb-1" style="color: var(--antrasit);">Adres</div>
-                                    <div class="text-gray-700">Merkez Mahallesi, İş Caddesi No:123<br>Şişli / İstanbul</div>
+                                    <div class="text-gray-700">Merkez Mahallesi, İş Caddesi No:123<br>Şişli / İstanbul
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -352,8 +450,10 @@
                             <div class="flex items-start">
                                 <div class="text-2xl mr-4" style="color: var(--altin);">🕒</div>
                                 <div>
-                                    <div class="font-bold text-lg mb-1" style="color: var(--antrasit);">Çalışma Saatleri</div>
-                                    <div class="text-gray-700">Pazartesi - Cuma: 08:00 - 18:00<br>Cumartesi: 09:00 - 16:00</div>
+                                    <div class="font-bold text-lg mb-1" style="color: var(--antrasit);">Çalışma Saatleri
+                                    </div>
+                                    <div class="text-gray-700">Pazartesi - Cuma: 08:00 - 18:00<br>Cumartesi: 09:00 -
+                                        16:00</div>
                                 </div>
                             </div>
                         </div>
@@ -362,19 +462,24 @@
                         <h3 class="text-2xl font-bold mb-6" style="color: var(--antrasit);">Mesaj Gönderin</h3>
                         <form class="space-y-5" onsubmit="handleSubmit(event)">
                             <div>
-                              <label class="block text-base font-semibold mb-2" style="color: var(--antrasit);">Ad Soyad</label>
-                              <input id="name" type="text" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-400 focus:outline-none transition duration-300">
+                                <label class="block text-base font-semibold mb-2" style="color: var(--antrasit);">Ad
+                                    Soyad</label>
+                                <input id="name" type="text" required
+                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-400 focus:outline-none transition duration-300">
                             </div>
-                            
+
                             <div>
-                              <label class="block text-base font-semibold mb-2" style="color: var(--antrasit);">Mesajınız</label>
-                              <textarea id="message" rows="4" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-400 focus:outline-none transition duration-300"></textarea>
+                                <label class="block text-base font-semibold mb-2"
+                                    style="color: var(--antrasit);">Mesajınız</label>
+                                <textarea id="message" rows="4" required
+                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-400 focus:outline-none transition duration-300"></textarea>
                             </div>
-                          
-                            <button type="submit" class="w-full gold-gradient text-black py-3 px-6 rounded-xl font-bold hover:scale-105 transition duration-300 shadow-lg">
-                              Mesaj Gönder
+
+                            <button type="submit"
+                                class="w-full gold-gradient text-black py-3 px-6 rounded-xl font-bold hover:scale-105 transition duration-300 shadow-lg">
+                                Mesaj Gönder
                             </button>
-                          </form>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -382,16 +487,18 @@
     </div>
 
 
-      
+
 
 
     <!-- İnşaat Sayfası -->
     <div id="construction" class="page">
-        <section class="pt-32 pb-48 min-h-[75vh]" style="background-image: linear-gradient(rgba(47,47,47,0.45), rgba(47,47,47,0.45)), url('assets/img/insaat/main.jpg'); background-size: cover; background-position: center;">
+        <section class="pt-32 pb-48 min-h-[75vh]"
+            style="background-image: linear-gradient(rgba(47,47,47,0.45), rgba(47,47,47,0.45)), url('assets/img/insaat/main.jpg'); background-size: cover; background-position: center;">
             <div class="container mx-auto px-6">
                 <div class="text-left text-white mb-12 max-w-4xl">
                     <h1 class="text-6xl font-bold mb-6" style="color: var(--altin);">İnşaat Hizmetleri</h1>
-                    <p class="text-2xl">Modern mimari anlayış ve kaliteli malzemelerle hayalinizdeki yapıları inşa ediyoruz. 15 yıllık deneyimimizle A'dan Z'ye tüm inşaat süreçlerinde yanınızdayız.</p>
+                    <p class="text-2xl">Modern mimari anlayış ve kaliteli malzemelerle hayalinizdeki yapıları inşa
+                        ediyoruz. 15 yıllık deneyimimizle A'dan Z'ye tüm inşaat süreçlerinde yanınızdayız.</p>
                 </div>
             </div>
         </section>
@@ -403,9 +510,13 @@
                 <div class="grid md:grid-cols-2 gap-16 items-start mb-32">
                     <div class="slide-in self-start">
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Konut Projeleri</h2>
-                        <p class="text-xl text-gray-600 mb-8">Ailenizin ihtiyaçlarına özel tasarlanmış, modern ve konforlu yaşam alanları inşa ediyoruz. Her detayı özenle planlanmış konutlarımızda kalite ve estetik bir arada.</p>
-                        <p class="text-lg text-gray-600 mb-8">Müstakil villalardan modern apartmanlara, lüks rezidanslardan ekonomik konutlara kadar her bütçeye uygun çözümler sunuyoruz. Projelerimizde enerji verimliliği, deprem dayanıklılığı ve çevre dostu malzemeler önceliğimizdir.</p>
-                        
+                        <p class="text-xl text-gray-600 mb-8">Ailenizin ihtiyaçlarına özel tasarlanmış, modern ve
+                            konforlu yaşam alanları inşa ediyoruz. Her detayı özenle planlanmış konutlarımızda kalite ve
+                            estetik bir arada.</p>
+                        <p class="text-lg text-gray-600 mb-8">Müstakil villalardan modern apartmanlara, lüks
+                            rezidanslardan ekonomik konutlara kadar her bütçeye uygun çözümler sunuyoruz. Projelerimizde
+                            enerji verimliliği, deprem dayanıklılığı ve çevre dostu malzemeler önceliğimizdir.</p>
+
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg">
                                 <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Villa İnşaatı</h4>
@@ -424,7 +535,7 @@
                                 <p class="text-gray-600">İç mekan tasarım ve uygulama</p>
                             </div>
                         </div>
-                        
+
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg">
                                 <span class="w-4 h-4 rounded-full mr-4" style="background-color: var(--altin);"></span>
@@ -446,7 +557,8 @@
                     </div>
                     <div class="text-center self-center">
                         <div class="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden mb-8">
-                            <img src="assets/img/insaat/konut.jpg" alt="İnşaat" class="absolute inset-0 w-full h-full object-cover">
+                            <img src="assets/img/insaat/konut.jpg" alt="İnşaat"
+                                class="absolute inset-0 w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -455,14 +567,19 @@
                 <div class="grid md:grid-cols-2 gap-16 items-start mb-32">
                     <div class="text-center self-center order-2 md:order-1">
                         <div class="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden mb-8">
-                            <img src="assets/img/insaat/ticari.jpg" alt="İnşaat" class="absolute inset-0 w-full h-full object-cover">
+                            <img src="assets/img/insaat/ticari.jpg" alt="İnşaat"
+                                class="absolute inset-0 w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="slide-in self-start order-1 md:order-2">
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Ticari Binalar</h2>
-                        <p class="text-xl text-gray-600 mb-8">İşletmenizin ihtiyaçlarına uygun, fonksiyonel ve prestijli ticari yapılar inşa ediyoruz. Ofis binalarından alışveriş merkezlerine kadar geniş bir yelpazede hizmet veriyoruz.</p>
-                        <p class="text-lg text-gray-600 mb-8">Ticari yapılarımızda işlevsellik, estetik ve maliyet etkinliği bir arada. LEED sertifikası alabilecek çevre dostu binalar tasarlıyor, akıllı bina teknolojileri entegre ediyoruz.</p>
-                        
+                        <p class="text-xl text-gray-600 mb-8">İşletmenizin ihtiyaçlarına uygun, fonksiyonel ve prestijli
+                            ticari yapılar inşa ediyoruz. Ofis binalarından alışveriş merkezlerine kadar geniş bir
+                            yelpazede hizmet veriyoruz.</p>
+                        <p class="text-lg text-gray-600 mb-8">Ticari yapılarımızda işlevsellik, estetik ve maliyet
+                            etkinliği bir arada. LEED sertifikası alabilecek çevre dostu binalar tasarlıyor, akıllı bina
+                            teknolojileri entegre ediyoruz.</p>
+
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg">
                                 <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Ofis Binaları</h4>
@@ -481,7 +598,7 @@
                                 <p class="text-gray-600">Otel ve turizm tesisleri</p>
                             </div>
                         </div>
-                        
+
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg">
                                 <span class="w-4 h-4 rounded-full mr-4" style="background-color: var(--altin);"></span>
@@ -507,28 +624,38 @@
                 <div class="grid md:grid-cols-2 gap-16 items-start mb-32">
                     <div class="slide-in self-start">
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Proje Yönetimi</h2>
-                        <p class="text-xl text-gray-600 mb-8">Projelerinizi baştan sona profesyonel ekibimizle yönetiyoruz. Planlama aşamasından teslim sürecine kadar her adımda yanınızdayız.</p>
-                        <p class="text-lg text-gray-600 mb-8">Deneyimli proje yöneticilerimiz, zamanında teslimat, bütçe kontrolü ve kalite standartlarının sağlanması için titizlikle çalışır. Düzenli raporlama ile süreç şeffaflığı garantisi veriyoruz.</p>
-                        
+                        <p class="text-xl text-gray-600 mb-8">Projelerinizi baştan sona profesyonel ekibimizle
+                            yönetiyoruz. Planlama aşamasından teslim sürecine kadar her adımda yanınızdayız.</p>
+                        <p class="text-lg text-gray-600 mb-8">Deneyimli proje yöneticilerimiz, zamanında teslimat, bütçe
+                            kontrolü ve kalite standartlarının sağlanması için titizlikle çalışır. Düzenli raporlama ile
+                            süreç şeffaflığı garantisi veriyoruz.</p>
+
                         <div class="space-y-6">
                             <div class="flex items-start">
-                                <div class="w-8 h-8 rounded-full mr-4 flex items-center justify-center text-white font-bold" style="background-color: var(--altin);">1</div>
+                                <div class="w-8 h-8 rounded-full mr-4 flex items-center justify-center text-white font-bold"
+                                    style="background-color: var(--altin);">1</div>
                                 <div>
-                                    <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Planlama ve Tasarım</h4>
-                                    <p class="text-gray-600">Mimari tasarım, mühendislik hesapları ve ruhsat işlemleri</p>
+                                    <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Planlama ve
+                                        Tasarım</h4>
+                                    <p class="text-gray-600">Mimari tasarım, mühendislik hesapları ve ruhsat işlemleri
+                                    </p>
                                 </div>
                             </div>
                             <div class="flex items-start">
-                                <div class="w-8 h-8 rounded-full mr-4 flex items-center justify-center text-white font-bold" style="background-color: var(--altin);">2</div>
+                                <div class="w-8 h-8 rounded-full mr-4 flex items-center justify-center text-white font-bold"
+                                    style="background-color: var(--altin);">2</div>
                                 <div>
-                                    <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">İnşaat Süreci</h4>
+                                    <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">İnşaat Süreci
+                                    </h4>
                                     <p class="text-gray-600">Kaliteli malzeme temini, işçilik ve süreç takibi</p>
                                 </div>
                             </div>
                             <div class="flex items-start">
-                                <div class="w-8 h-8 rounded-full mr-4 flex items-center justify-center text-white font-bold" style="background-color: var(--altin);">3</div>
+                                <div class="w-8 h-8 rounded-full mr-4 flex items-center justify-center text-white font-bold"
+                                    style="background-color: var(--altin);">3</div>
                                 <div>
-                                    <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Teslim ve Garanti</h4>
+                                    <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Teslim ve Garanti
+                                    </h4>
                                     <p class="text-gray-600">Eksiksiz teslim ve 5 yıl yapısal garanti</p>
                                 </div>
                             </div>
@@ -536,7 +663,8 @@
                     </div>
                     <div class="text-center self-center">
                         <div class="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden mb-8">
-                            <img src="assets/img/insaat/plan.png" alt="İnşaat" class="absolute inset-0 w-full h-full object-cover">
+                            <img src="assets/img/insaat/plan.png" alt="İnşaat"
+                                class="absolute inset-0 w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -545,54 +673,66 @@
                 <div class="mb-20">
                     <div class="text-center mb-16">
                         <h2 class="text-5xl font-bold mb-6" style="color: var(--antrasit);">Tamamlanan Projelerimiz</h2>
-                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Son 5 yılda tamamladığımız başarılı inşaat projelerinden örnekler</p>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Son 5 yılda tamamladığımız başarılı inşaat
+                            projelerinden örnekler</p>
                     </div>
-                    
+
                     <div class="gallery-grid">
                         <div class="project-card">
-                            <img src="assets/img/insaat/projects/1.jpg" alt="İnşaat" class="w-full h-64 object-cover rounded-2xl mb-8">
+                            <img src="assets/img/insaat/projects/1.jpg" alt="İnşaat"
+                                class="w-full h-64 object-cover rounded-2xl mb-8">
                             <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Zekeriyaköy Villa</h3>
+                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Zekeriyaköy Villa
+                                </h3>
                                 <p class="text-gray-600">Modern mimari, akıllı ev sistemleri, 4+1, bahçe ve havuz</p>
                             </div>
                         </div>
-                        
+
                         <div class="project-card">
-                            <img src="assets/img/insaat/projects/2.jpg" alt="İnşaat" class="w-full h-64 object-cover rounded-2xl mb-8">
+                            <img src="assets/img/insaat/projects/2.jpg" alt="İnşaat"
+                                class="w-full h-64 object-cover rounded-2xl mb-8">
                             <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Maslak İş Merkezi</h3>
+                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Maslak İş Merkezi
+                                </h3>
                                 <p class="text-gray-600">LEED Gold sertifikalı, 15 kat, 200 ofis, otopark</p>
                             </div>
                         </div>
-                        
+
                         <div class="project-card">
-                            <img src="assets/img/insaat/projects/3.jpg" alt="İnşaat" class="w-full h-64 object-cover rounded-2xl mb-8">
+                            <img src="assets/img/insaat/projects/3.jpg" alt="İnşaat"
+                                class="w-full h-64 object-cover rounded-2xl mb-8">
                             <div class="p-6">
                                 <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Kadıköy Rezidans</h3>
                                 <p class="text-gray-600">32 daire, spor salonu, çocuk parkı, güvenlik</p>
                             </div>
                         </div>
-                        
+
                         <div class="project-card">
-                            <img src="assets/img/insaat/projects/4.jpg" alt="İnşaat" class="w-full h-64 object-cover rounded-2xl mb-8">
+                            <img src="assets/img/insaat/projects/4.jpg" alt="İnşaat"
+                                class="w-full h-64 object-cover rounded-2xl mb-8">
                             <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Gebze Üretim Tesisi</h3>
+                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Gebze Üretim Tesisi
+                                </h3>
                                 <p class="text-gray-600">10.000m² kapalı alan, ofis binası, sosyal tesisler</p>
                             </div>
                         </div>
-                        
+
                         <div class="project-card">
-                            <img src="assets/img/insaat/projects/5.jpg" alt="İnşaat" class="w-full h-64 object-cover rounded-2xl mb-8">
+                            <img src="assets/img/insaat/projects/5.jpg" alt="İnşaat"
+                                class="w-full h-64 object-cover rounded-2xl mb-8">
                             <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Antalya Butik Otel</h3>
+                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Antalya Butik Otel
+                                </h3>
                                 <p class="text-gray-600">50 oda, spa merkezi, restoran, deniz manzarası</p>
                             </div>
                         </div>
-                        
+
                         <div class="project-card">
-                            <img src="assets/img/insaat/projects/6.jpg" alt="İnşaat" class="w-full h-64 object-cover rounded-2xl mb-8">
+                            <img src="assets/img/insaat/projects/6.jpg" alt="İnşaat"
+                                class="w-full h-64 object-cover rounded-2xl mb-8">
                             <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Nişantaşı Showroom</h3>
+                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Nişantaşı Showroom
+                                </h3>
                                 <p class="text-gray-600">3 katlı mağaza, modern tasarım, VIP alanlar</p>
                             </div>
                         </div>
@@ -604,25 +744,340 @@
 
     <!-- Mobilya Sayfası -->
     <div id="furniture" class="page">
-        <section class="pt-24 pb-16" style="background: linear-gradient(135deg, var(--antrasit) 0%, var(--antrasit) 100%);">
+        <section class="pt-32 pb-48 min-h-[75vh]"
+            style="background-image: linear-gradient(rgba(47,47,47,0.45), rgba(47,47,47,0.45)), url('assets/img/mobilya/main.jpg'); background-size: cover; background-position: center;">
             <div class="container mx-auto px-6">
-                <div class="text-center text-white mb-16">
+                <div class="text-left text-white mb-12 max-w-4xl">
                     <h1 class="text-6xl font-bold mb-6" style="color: var(--altin);">Mobilya Tasarım & Üretim</h1>
-                    <p class="text-2xl max-w-4xl mx-auto">Özel tasarım mobilyalarla yaşam alanlarınızı kişiselleştirin. Kaliteli malzeme ve işçilikle üretilen mobilyalarımız uzun yıllar kullanım garantisi sunar.</p>
+                    <p class="text-2xl">Özel tasarım mobilyalarla yaşam alanlarınızı kişiselleştirin. Kaliteli malzeme
+                        ve işçilikle üretilen mobilyalarımız uzun yıllar kullanım garantisi sunar.</p>
                 </div>
             </div>
         </section>
+        <style>
+            .menu-section {
+                width: 100%;
+                background: var(--beyaz);
+                border-radius: 0px;
+                padding: 20px 15px;
+                box-shadow: 0 32px 64px rgba(0, 0, 0, 0.4),
+                    0 0 0 2px var(--altin);
+                backdrop-filter: blur(20px);
+                position: relative;
+                overflow: hidden;
+            }
 
-        <!-- Hero Image Section -->
-        <section class="py-16" style="background-color: var(--beyaz);">
-            <div class="container mx-auto px-6">
-                <div class="image-placeholder w-full h-96 mb-8">
-                    <div>
-                        <p class="text-2xl mb-4">🪑 ANA MOBİLYA RESMİ</p>
-                        <p class="text-lg">Modern mobilya atölyesi, üretim süreci ve tamamlanmış mobilya örnekleri</p>
+            .menu-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, var(--altin), transparent);
+            }
+
+            .section-title {
+                text-align: center;
+                font-size: 2.8rem;
+                font-weight: 800;
+                color: var(--antrasit);
+                margin-bottom: 50px;
+                letter-spacing: -0.02em;
+                position: relative;
+            }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 3px;
+                background: var(--altin);
+                border-radius: 2px;
+            }
+
+            .menu-wrapper {
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: 30px;
+            }
+
+            .scroll-btn {
+                background: var(--altin);
+                color: var(--beyaz);
+                border: none;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+                /* 4.6 fazla büyükse dengele */
+                line-height: 1;
+                /* <-- kritik satır */
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+                position: relative;
+                overflow: hidden;
+                flex-shrink: 0;
+                padding: 0;
+                /* <-- buton iç boşluğu sıfırla */
+            }
+
+            .scroll-btn::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+                border-radius: 50%;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .scroll-btn:hover {
+                transform: translateY(-4px) scale(1.05);
+                box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
+                background: #c19b2e;
+            }
+
+            .scroll-btn:hover::before {
+                opacity: 1;
+            }
+
+            .scroll-btn:active {
+                transform: translateY(-2px) scale(1.02);
+            }
+
+            .menu-container {
+                flex: 1;
+                overflow: hidden;
+                border-radius: 15px;
+            }
+
+            .menu-scroll {
+                display: flex;
+                gap: 25px;
+                overflow-x: auto;
+                min-width: 320px;
+                padding: 20px 0;
+                scroll-behavior: smooth;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                position: relative;
+            }
+
+            .menu-scroll::-webkit-scrollbar {
+                display: none;
+            }
+
+            .menu-item {
+                flex: 0 0 320px;
+                height: 380px;
+                background: var(--beyaz);
+                border-radius: 20px;
+                padding: 0;
+                box-shadow: 0 10px 30px rgba(47, 47, 47, 0.15);
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                cursor: pointer;
+                border: 3px solid transparent;
+                position: relative;
+                aspect-ratio: 16 / 9;
+                /* 16:9 oranında sabit alan */
+                overflow: hidden;
+            }
+
+            .menu-item:hover {
+                transform: translateY(-12px) scale(1.02);
+                box-shadow: 0 25px 50px rgba(47, 47, 47, 0.25);
+                border-color: var(--altin);
+            }
+
+            .menu-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                /* en kritik satır */
+                display: block;
+            }
+
+            .menu-item::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.02));
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                z-index: 1;
+            }
+
+            .menu-item:hover::before {
+                opacity: 1;
+            }
+
+            .item-image {
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+                border-radius: 17px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1rem;
+                font-weight: 500;
+                color: var(--antrasit);
+                position: relative;
+                overflow: hidden;
+                letter-spacing: 0.5px;
+            }
+
+            .item-image::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.3) 50%, transparent 70%);
+                transform: translateX(-100%);
+                transition: transform 0.8s ease;
+            }
+
+            .menu-item:hover .item-image::after {
+                transform: translateX(100%);
+            }
+
+            @media (max-width: 768px) {
+                .menu-item {
+                    flex: 0 0 280px;
+                    height: 340px;
+                }
+
+                .section-title {
+                    font-size: 2rem;
+                }
+
+                .menu-wrapper {
+                    gap: 15px;
+                }
+
+                .scroll-btn {
+                    width: 50px;
+                    height: 50px;
+                    font-size: 1.4rem;
+                }
+            }
+        </style>
+
+
+
+
+        <section>
+            <div class="menu-section">
+                <h2 class="section-title">Özel Ürünlerimiz</h2>
+
+                <div class="menu-wrapper">
+                    <button class="scroll-btn" onclick="scrollMenu('left')">‹</button>
+
+                    <div class="menu-container">
+                        <div class="menu-scroll" id="menuScroll">
+                            <!-- İlk set -->
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/1.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/2.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/3.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/4.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/5.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/6.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/7.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/8.jpg" alt="">
+                            </div>
+
+                            <!-- İkinci set (sonsuz döngü için) -->
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/1.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/2.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/3.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/4.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/5.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/6.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/7.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/8.jpg" alt="">
+                            </div>
+
+                            <!-- Üçüncü set (sonsuz döngü için) -->
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/1.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/2.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/3.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/4.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/5.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/6.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/7.jpg" alt="">
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/mobilya/slider/8.jpg" alt="">
+                            </div>
+                        </div>
                     </div>
+
+                    <button class="scroll-btn" onclick="scrollMenu('right')">›</button>
                 </div>
             </div>
+
+
+
         </section>
 
         <section class="py-20" style="background-color: #f8f9fa;">
@@ -631,9 +1086,13 @@
                 <div class="grid md:grid-cols-2 gap-16 items-center mb-32">
                     <div class="slide-in">
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Mutfak Dolapları</h2>
-                        <p class="text-xl text-gray-600 mb-8">Mutfağınızın ihtiyaçlarına özel tasarlanmış, fonksiyonel ve estetik mutfak dolapları üretiyoruz. Modern teknoloji ve kaliteli malzemelerle uzun ömürlü çözümler sunuyoruz.</p>
-                        <p class="text-lg text-gray-600 mb-8">18mm lam ve MDF kullanarak ürettiğimiz mutfak dolaplarımız, Blum ve Hettich gibi dünya markası aksesuarlarla donatılır. Su geçirmez özel boyalarımız ile yıllarca yeni gibi kalır.</p>
-                        
+                        <p class="text-xl text-gray-600 mb-8">Mutfağınızın ihtiyaçlarına özel tasarlanmış, fonksiyonel
+                            ve estetik mutfak dolapları üretiyoruz. Modern teknoloji ve kaliteli malzemelerle uzun
+                            ömürlü çözümler sunuyoruz.</p>
+                        <p class="text-lg text-gray-600 mb-8">18mm lam ve MDF kullanarak ürettiğimiz mutfak
+                            dolaplarımız, Blum ve Hettich gibi dünya markası aksesuarlarla donatılır. Su geçirmez özel
+                            boyalarımız ile yıllarca yeni gibi kalır.</p>
+
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg">
                                 <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Modern Mutfak</h4>
@@ -652,7 +1111,7 @@
                                 <p class="text-gray-600">Kompakt çözümler, maksimum verimlilik</p>
                             </div>
                         </div>
-                        
+
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg">
                                 <span class="w-4 h-4 rounded-full mr-4" style="background-color: var(--altin);"></span>
@@ -672,31 +1131,31 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="text-center">
-                        <div class="image-placeholder w-full h-96 mb-6">
-                            <div>
-                                <p class="text-xl mb-4">🍳 MUTFAK DOLAPLARI RESMİ</p>
-                                <p class="text-base">Modern mutfak dolapları, farklı renk ve stil seçenekleri, açık ve kapalı dolap örnekleri</p>
-                            </div>
+                    <div class="text-center self-center">
+                        <div class="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden mb-8">
+                            <img src="assets/img/mobilya/m_dolap.jpg" alt="İnşaat"
+                                class="absolute inset-0 w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
 
                 <!-- Yatak Odası Takımları -->
                 <div class="grid md:grid-cols-2 gap-16 items-center mb-32">
-                    <div class="text-center order-2 md:order-1">
-                        <div class="image-placeholder w-full h-96 mb-6">
-                            <div>
-                                <p class="text-xl mb-4">🛏️ YATAK ODASI RESMİ</p>
-                                <p class="text-base">Yatak odası takımları, gardırop, şifonyer ve yatak başlığı örnekleri</p>
-                            </div>
+                    <div class="text-center self-center order-2 md:order-1">
+                        <div class="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden mb-8">
+                            <img src="assets/img/mobilya/y_odası.jpg" alt="İnşaat"
+                                class="absolute inset-0 w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="slide-in order-1 md:order-2">
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Yatak Odası Takımları</h2>
-                        <p class="text-xl text-gray-600 mb-8">Rahat ve huzurlu bir uyku için tasarlanmış yatak odası takımlarımız, estetik ve fonksiyonelliği bir araya getiriyor. Her yatak odasına uygun boyut ve tasarım seçenekleri sunuyoruz.</p>
-                        <p class="text-lg text-gray-600 mb-8">Gardıroplarımızda akıllı depolama çözümleri, şifonyer ve komodinlerimizde soft-close sistemler, yatak başlıklarımızda ergonomik tasarım ön planda. Tüm ürünlerimiz E1 sınıfı, formaldehit emisyonu düşük malzemelerden üretilir.</p>
-                        
+                        <p class="text-xl text-gray-600 mb-8">Rahat ve huzurlu bir uyku için tasarlanmış yatak odası
+                            takımlarımız, estetik ve fonksiyonelliği bir araya getiriyor. Her yatak odasına uygun boyut
+                            ve tasarım seçenekleri sunuyoruz.</p>
+                        <p class="text-lg text-gray-600 mb-8">Gardıroplarımızda akıllı depolama çözümleri, şifonyer ve
+                            komodinlerimizde soft-close sistemler, yatak başlıklarımızda ergonomik tasarım ön planda.
+                            Tüm ürünlerimiz E1 sınıfı, formaldehit emisyonu düşük malzemelerden üretilir.</p>
+
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg">
                                 <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Gardıroplar</h4>
@@ -715,7 +1174,7 @@
                                 <p class="text-gray-600">Çekmeceli, kapaklı, şarj üniteli</p>
                             </div>
                         </div>
-                        
+
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg">
                                 <span class="w-4 h-4 rounded-full mr-4" style="background-color: var(--altin);"></span>
@@ -741,9 +1200,13 @@
                 <div class="grid md:grid-cols-2 gap-16 items-center mb-32">
                     <div class="slide-in">
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Oturma Grupları</h2>
-                        <p class="text-xl text-gray-600 mb-8">Konforlu ve şık oturma grupları ile yaşam alanlarınızı daha keyifli hale getirin. Kaliteli kumaş ve deri seçenekleri ile uzun yıllar kullanabileceğiniz mobilyalar üretiyoruz.</p>
-                        <p class="text-lg text-gray-600 mb-8">Oturma gruplarımızda yüksek yoğunluklu sünger, sağlam ahşap iskelet ve kaliteli kumaş/deri kaplama kullanıyoruz. Ergonomik tasarım ile uzun süreli oturma konforu sağlıyoruz.</p>
-                        
+                        <p class="text-xl text-gray-600 mb-8">Konforlu ve şık oturma grupları ile yaşam alanlarınızı
+                            daha keyifli hale getirin. Kaliteli kumaş ve deri seçenekleri ile uzun yıllar
+                            kullanabileceğiniz mobilyalar üretiyoruz.</p>
+                        <p class="text-lg text-gray-600 mb-8">Oturma gruplarımızda yüksek yoğunluklu sünger, sağlam
+                            ahşap iskelet ve kaliteli kumaş/deri kaplama kullanıyoruz. Ergonomik tasarım ile uzun süreli
+                            oturma konforu sağlıyoruz.</p>
+
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg">
                                 <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Koltuk Takımları</h4>
@@ -762,7 +1225,7 @@
                                 <p class="text-gray-600">Size özel ölçü ve tasarım</p>
                             </div>
                         </div>
-                        
+
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg">
                                 <span class="w-4 h-4 rounded-full mr-4" style="background-color: var(--altin);"></span>
@@ -782,38 +1245,39 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="text-center">
-                        <div class="image-placeholder w-full h-96 mb-6">
-                            <div>
-                                <p class="text-xl mb-4">🛋️ OTURMA GRUPLARI RESMİ</p>
-                                <p class="text-base">Koltuk takımları, köşe takımları, berjer ve tekli koltuk örnekleri</p>
-                            </div>
+                    <div class="text-center self-center">
+                        <div class="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden mb-8">
+                            <img src="assets/img/mobilya/oturma.jpg" alt="İnşaat"
+                                class="absolute inset-0 w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
 
                 <!-- Ofis Mobilyaları -->
                 <div class="grid md:grid-cols-2 gap-16 items-center mb-32">
-                    <div class="text-center order-2 md:order-1">
-                        <div class="image-placeholder w-full h-96 mb-6">
-                            <div>
-                                <p class="text-xl mb-4">💼 OFİS MOBİLYASI RESMİ</p>
-                                <p class="text-base">Ofis masaları, çalışma koltuğu, dolap ve toplantı masası örnekleri</p>
-                            </div>
+                    <div class="text-center self-center order-2 md:order-1">
+                        <div class="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden mb-8">
+                            <img src="assets/img/mobilya/ofis.jpg" alt="İnşaat"
+                                class="absolute inset-0 w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="slide-in order-1 md:order-2">
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Ofis Mobilyaları</h2>
-                        <p class="text-xl text-gray-600 mb-8">Verimli çalışma ortamları için ergonomik ve fonksiyonel ofis mobilyaları üretiyoruz. Modern tasarım ve kaliteli malzemelerle profesyonel çalışma alanları oluşturuyoruz.</p>
-                        <p class="text-lg text-gray-600 mb-8">Ofis mobilyalarımızda çelik ayak sistemleri, laminant yüzeyler ve ergonomik tasarım ön planda. Kablo yönetimi, ayarlanabilir yükseklik ve modüler yapı ile esnek çözümler sunuyoruz.</p>
-                        
+                        <p class="text-xl text-gray-600 mb-8">Verimli çalışma ortamları için ergonomik ve fonksiyonel
+                            ofis mobilyaları üretiyoruz. Modern tasarım ve kaliteli malzemelerle profesyonel çalışma
+                            alanları oluşturuyoruz.</p>
+                        <p class="text-lg text-gray-600 mb-8">Ofis mobilyalarımızda çelik ayak sistemleri, laminant
+                            yüzeyler ve ergonomik tasarım ön planda. Kablo yönetimi, ayarlanabilir yükseklik ve modüler
+                            yapı ile esnek çözümler sunuyoruz.</p>
+
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg">
                                 <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Çalışma Masaları</h4>
                                 <p class="text-gray-600">Ayarlanabilir, L şeklinde, ikili</p>
                             </div>
                             <div class="bg-white p-6 rounded-xl shadow-lg">
-                                <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Toplantı Masaları</h4>
+                                <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Toplantı Masaları
+                                </h4>
                                 <p class="text-gray-600">Oval, dikdörtgen, modüler sistem</p>
                             </div>
                             <div class="bg-white p-6 rounded-xl shadow-lg">
@@ -825,7 +1289,7 @@
                                 <p class="text-gray-600">Karşılama bankoları, bekleme alanı</p>
                             </div>
                         </div>
-                        
+
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg">
                                 <span class="w-4 h-4 rounded-full mr-4" style="background-color: var(--altin);"></span>
@@ -847,119 +1311,369 @@
                     </div>
                 </div>
 
-                <!-- Mobilya Galerisi -->
-                <div class="mb-20">
-                    <div class="text-center mb-16">
-                        <h2 class="text-5xl font-bold mb-6" style="color: var(--antrasit);">Mobilya Galerimiz</h2>
-                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Ürettiğimiz kaliteli mobilyalardan örnekler ve müşteri memnuniyeti</p>
+
+            </div>
+        </section>
+        <style>
+            .why-us-section {
+                padding: 80px 0;
+                background: linear-gradient(135deg, var(--beyaz) 0%, #f8f9fa 100%);
+            }
+
+            .container1 {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .section-header1 {
+                text-align: center;
+                margin-bottom: 60px;
+            }
+
+            .section-title {
+                font-size: 3rem;
+                font-weight: 700;
+                color: var(--antrasit);
+                margin-bottom: 15px;
+            }
+
+            .section-subtitle {
+                font-size: 1.2rem;
+                color: #666;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .cards-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 40px;
+                margin-top: 50px;
+            }
+
+            .advantage-card {
+                background: var(--beyaz);
+                border-radius: 20px;
+                padding: 40px 30px;
+                text-align: center;
+                box-shadow: 0 10px 30px rgba(47, 47, 47, 0.1);
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .advantage-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 4px;
+                background: linear-gradient(90deg, var(--altin), #f4d03f);
+                transition: left 0.3s ease;
+            }
+
+            .advantage-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(47, 47, 47, 0.15);
+            }
+
+            .advantage-card:hover::before {
+                left: 0;
+            }
+
+            .card-icon {
+                width: 80px;
+                height: 80px;
+                background: linear-gradient(45deg, var(--altin), #f4d03f);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 25px;
+                font-size: 2.2rem;
+                transition: transform 0.3s ease;
+            }
+
+            .advantage-card:hover .card-icon {
+                transform: scale(1.1) rotate(5deg);
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--antrasit);
+                margin-bottom: 15px;
+            }
+
+            .card-description {
+                font-size: 1rem;
+                color: #666;
+                line-height: 1.7;
+            }
+
+            .highlight {
+                color: var(--altin);
+                font-weight: 600;
+            }
+
+            @media (max-width: 768px) {
+                .section-title {
+                    font-size: 2.2rem;
+                }
+
+                .cards-container {
+                    grid-template-columns: 1fr;
+                    gap: 30px;
+                }
+
+                .advantage-card {
+                    padding: 30px 25px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .why-us-section {
+                    padding: 60px 0;
+                }
+
+                .section-title {
+                    font-size: 1.8rem;
+                }
+
+                .section-subtitle {
+                    font-size: 1rem;
+                }
+            }
+        </style>
+        <section class="why-us-section">
+            <div class="container1">
+                <div class="section-header1">
+                    <h2 class="section-title">Neden Hitit Mobilya?</h2>
+                    <p class="section-subtitle">Müşterilerimizin bizi tercih etmesinin sebepleri ve size sunduğumuz özel
+                        avantajlar</p>
+                </div>
+
+                <div class="cards-container">
+                    <div class="advantage-card">
+                        <div class="card-icon">🚚</div>
+                        <h3 class="card-title">Ücretsiz Kurulum</h3>
+                        <p class="card-description">
+                            Satın aldığınız tüm mobilyalar için <span class="highlight">ücretsiz teslimat ve
+                                kurulum</span> hizmeti sunuyoruz. Uzman ekibimiz evinize gelir ve mobilyalarınızı özenle
+                            kurar.
+                        </p>
                     </div>
-                    
-                    <div class="gallery-grid">
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">🍳 MODERN MUTFAK</p>
-                                    <p class="text-sm">Beyaz lake mutfak dolabı</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Modern Mutfak Dolabı</h3>
-                                <p class="text-gray-600">Beyaz lake, gizli kulp, Blum aksesuar, ada tezgah</p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">🛏️ YATAK ODASI</p>
-                                    <p class="text-sm">Ceviz yatak odası takımı</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Ceviz Yatak Odası</h3>
-                                <p class="text-gray-600">6 kapılı gardırop, LED aydınlatma, kapitone başlık</p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">🛋️ OTURMA GRUBU</p>
-                                    <p class="text-sm">Köşe koltuk takımı</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Köşe Koltuk Takımı</h3>
-                                <p class="text-gray-600">Yataklı, sandıklı, mikrofiber kumaş, visco sünger</p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">💼 OFİS MASASI</p>
-                                    <p class="text-sm">Yönetici masa takımı</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Yönetici Masa Takımı</h3>
-                                <p class="text-gray-600">L şeklinde masa, dolap ünitesi, kablo yönetimi</p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">🏠 TV ÜNİTESİ</p>
-                                    <p class="text-sm">Duvar tipi TV ünitesi</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">TV Ünitesi</h3>
-                                <p class="text-gray-600">Asma dolap, LED şerit, kablo gizleme, cam raf</p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">🪑 YEMEK MASASI</p>
-                                    <p class="text-sm">Masif ahşap yemek masası</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Yemek Masası Takımı</h3>
-                                <p class="text-gray-600">Masif meşe, 6 kişilik, döşemeli sandalye</p>
-                            </div>
-                        </div>
+
+                    <div class="advantage-card">
+                        <div class="card-icon">🛡️</div>
+                        <h3 class="card-title">5 Yıl Garanti</h3>
+                        <p class="card-description">
+                            Tüm ürünlerimizde <span class="highlight">5 yıl tam garanti</span> veriyoruz. Kaliteli
+                            malzemeler ve işçilik garantisiyle uzun yıllar kullanabileceğiniz mobilyalar.
+                        </p>
+                    </div>
+
+                    <div class="advantage-card">
+                        <div class="card-icon">💳</div>
+                        <h3 class="card-title">12 Aya Varan Taksit</h3>
+                        <p class="card-description">
+                            <span class="highlight">Kredi kartına 12 aya varan taksit</span> imkanı ile hayalinizdeki
+                            mobilyalara kolayca sahip olun. Uygun ödeme seçenekleri ile bütçenizi zorlamayın.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
+        <script>
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Initialize cards with animation
+            document.addEventListener('DOMContentLoaded', () => {
+                const cards = document.querySelectorAll('.advantage-card');
+
+                cards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    card.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+                    observer.observe(card);
+                });
+            });
+
+            // Add click interaction for cards
+            document.querySelectorAll('.advantage-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    // Add a subtle pulse effect
+                    card.style.transform = 'translateY(-10px) scale(0.98)';
+                    setTimeout(() => {
+                        card.style.transform = 'translateY(-10px) scale(1)';
+                    }, 150);
+                });
+            });
+        </script>
+
     </div>
+    <script>
+        const menuScroll = document.getElementById('menuScroll');
+        const itemWidth = 345; // 320px + 25px gap
+        const totalItems = 8; // Toplam ürün sayısı
+        let isScrolling = false;
+
+        // Başlangıçta ortadaki sete konumlan
+        menuScroll.scrollLeft = itemWidth * totalItems;
+
+        function scrollMenu(direction) {
+            // 4 resim kadar kaydır
+            const scrollAmount = itemWidth * 1;
+
+            if (direction === 'left') {
+                menuScroll.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                menuScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // Sonsuz döngü kontrolü
+        function checkInfiniteScroll() {
+            if (isScrolling) return;
+
+            const maxScroll = menuScroll.scrollWidth - menuScroll.clientWidth;
+            const currentScroll = menuScroll.scrollLeft;
+
+            // Sağa çok kaydırıldıysa başa dön
+            if (currentScroll >= maxScroll - 50) {
+                isScrolling = true;
+                menuScroll.scrollLeft = itemWidth * totalItems;
+                setTimeout(() => { isScrolling = false; }, 100);
+            }
+
+            // Sola çok kaydırıldıysa sona git
+            if (currentScroll <= 50) {
+                isScrolling = true;
+                menuScroll.scrollLeft = itemWidth * totalItems;
+                setTimeout(() => { isScrolling = false; }, 100);
+            }
+        }
+
+        // Scroll olayını dinle
+        menuScroll.addEventListener('scroll', checkInfiniteScroll);
+
+        // Ürün tıklama efekti
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Tıklama animasyonu
+                this.style.transform = 'translateY(-12px) scale(0.98)';
+
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-12px) scale(1.02)';
+                }, 150);
+
+                console.log('Ürün seçildi!');
+            });
+        });
+
+        // Touch/swipe desteği
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        menuScroll.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - menuScroll.offsetLeft;
+            scrollLeft = menuScroll.scrollLeft;
+        });
+
+        menuScroll.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        menuScroll.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        menuScroll.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - menuScroll.offsetLeft;
+            const walk = (x - startX) * 2;
+            menuScroll.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+
+
+
+
 
     <!-- Otomotiv Sayfası -->
     <div id="automotive" class="page">
-        <section class="pt-24 pb-16" style="background: linear-gradient(135deg, var(--antrasit) 0%, var(--antrasit) 100%);">
+        <section class="pt-32 pb-48 min-h-[75vh]"
+            style="background-image: linear-gradient(rgba(47,47,47,0.45), rgba(47,47,47,0.45)), url('assets/img/otomotiv/main.jpg'); background-size: cover; background-position: center;">
             <div class="container mx-auto px-6">
-                <div class="text-center text-white mb-16">
-                    <h1 class="text-6xl font-bold mb-6" style="color: var(--altin);">Otomotiv Hizmetleri</h1>
-                    <p class="text-2xl max-w-4xl mx-auto">Araç satış, bakım ve onarım hizmetleri ile otomotiv ihtiyaçlarınızın tek adresi. Güvenilir hizmet ve uzman ekibimizle yanınızdayız.</p>
+                <div class="text-left text-white mb-12 max-w-4xl">
+                    <h1 class="text-6xl font-bold mb-6" style="color: var(--altin);">Hitit Otomotiv</h1>
+                    <p class="text-2xl">Kuruluşumuzdan bu yana otomotiv sektöründe yenilikçi çözümler sunuyoruz.
+                        Amacımız, her sürüşü güvenli ve keyifli hale getirmek</p>
                 </div>
             </div>
         </section>
 
-        <!-- Hero Image Section -->
-        <section class="py-16" style="background-color: var(--beyaz);">
-            <div class="container mx-auto px-6">
-                <div class="image-placeholder w-full h-96 mb-8">
-                    <div>
-                        <p class="text-2xl mb-4">🚗 ANA OTOMOTİV RESMİ</p>
-                        <p class="text-lg">Modern oto galeri, servis atölyesi ve araç bakım hizmetleri genel görünümü</p>
+
+        <section class="why-us-section">
+            <div class="container1">
+                <div class="section-header1">
+                    <h2 class="section-title">Neden Hitit Otomotiv</h2>
+                    <p class="section-subtitle">Müşterilerimizin bizi tercih etmesinin sebepleri ve size sunduğumuz özel
+                        avantajlar</p>
+                </div>
+
+                <div class="cards-container">
+                    <div class="advantage-card">
+                        <div class="card-icon">🛡️</div>
+                        <h3 class="card-title">Güven ve Kalite</h3>
+                        <p class="card-description">
+                            Hitit Otomotiv, uzun yılların tecrübesiyle araçlarında üstün güvenlik ve yüksek kalite
+                            sunar. Her modelimiz, güvenli sürüş ve dayanıklılık standartlarına uygun olarak
+                            tasarlanmıştır.
+                        </p>
+                    </div>
+
+                    <div class="advantage-card">
+                        <div class="card-icon">⚙️</div>
+                        <h3 class="card-title">Profesyonel Bakım ve Servis</h3>
+                        <p class="card-description">
+                            Araçlarınızın bakım ve onarımını uzman ekibimiz üstlenir. Modern ekipmanlarımız ve deneyimli
+                            teknisyenlerimiz ile aracınız her zaman en iyi durumda olur.
+                        </p>
+                    </div>
+
+                    <div class="advantage-card">
+                        <div class="card-icon">🤝</div>
+                        <h3 class="card-title">Müşteri Odaklı Hizmet</h3>
+                        <p class="card-description">
+                            Satış öncesi ve sonrası tüm süreçlerde yanınızdayız. Test sürüşleri, danışmanlık ve servis
+                            hizmetlerimizle her adımda memnuniyetinizi garanti ediyoruz.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <section class="py-20" style="background-color: #f8f9fa;">
             <div class="container mx-auto px-6">
@@ -967,9 +1681,12 @@
                 <div class="grid md:grid-cols-2 gap-16 items-center mb-32">
                     <div class="slide-in">
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Araç Satış</h2>
-                        <p class="text-xl text-gray-600 mb-8">Sıfır ve ikinci el araç satışında güvenilir hizmet. Geniş araç parkurumuz ve uzman ekibimizle size en uygun aracı bulmanızda yardımcı oluyoruz.</p>
-                        <p class="text-lg text-gray-600 mb-8">Tüm markalardan araç seçenekleri, şeffaf fiyatlandırma ve güvenli alım-satım işlemleri. Kredi ve sigorta konularında da danışmanlık hizmeti veriyoruz.</p>
-                        
+                        <p class="text-xl text-gray-600 mb-8">Sıfır ve ikinci el araç satışında güvenilir hizmet. Geniş
+                            araç parkurumuz ve uzman ekibimizle size en uygun aracı bulmanızda yardımcı oluyoruz.</p>
+                        <p class="text-lg text-gray-600 mb-8">Tüm markalardan araç seçenekleri, şeffaf fiyatlandırma ve
+                            güvenli alım-satım işlemleri. Kredi ve sigorta konularında da danışmanlık hizmeti veriyoruz.
+                        </p>
+
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg">
                                 <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Sıfır Araçlar</h4>
@@ -988,7 +1705,7 @@
                                 <p class="text-gray-600">Premium marka ve modeller</p>
                             </div>
                         </div>
-                        
+
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg">
                                 <span class="w-4 h-4 rounded-full mr-4" style="background-color: var(--altin);"></span>
@@ -1008,31 +1725,31 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="text-center">
-                        <div class="image-placeholder w-full h-96 mb-6">
-                            <div>
-                                <p class="text-xl mb-4">🏪 ARAÇ SATIŞ RESMİ</p>
-                                <p class="text-base">Modern oto galeri, sergi alanında araçlar, satış danışmanları</p>
-                            </div>
+                    <div class="text-center self-center">
+                        <div class="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden mb-8">
+                            <img src="assets/img/otomotiv/satis.jpg" alt="İnşaat"
+                                class="absolute inset-0 w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
 
                 <!-- Bakım & Onarım -->
                 <div class="grid md:grid-cols-2 gap-16 items-center mb-32">
-                    <div class="text-center order-2 md:order-1">
-                        <div class="image-placeholder w-full h-96 mb-6">
-                            <div>
-                                <p class="text-xl mb-4">🔧 SERVİS ATÖLYESİ RESMİ</p>
-                                <p class="text-base">Modern servis atölyesi, lift sistemleri, teknisyenler ve araç bakımı</p>
-                            </div>
+                    <div class="text-center self-center order-2 md:order-1">
+                        <div class="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden mb-8">
+                            <img src="assets/img/otomotiv/bakim.jpg" alt="İnşaat"
+                                class="absolute inset-0 w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="slide-in order-1 md:order-2">
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Bakım & Onarım</h2>
-                        <p class="text-xl text-gray-600 mb-8">Profesyonel ekibimiz ve modern ekipmanlarımızla aracınızın bakım ve onarım işlemlerini güvenle gerçekleştiriyoruz. Periyodik bakımdan büyük onarımlara kadar her türlü hizmet.</p>
-                        <p class="text-lg text-gray-600 mb-8">Orijinal yedek parça kullanımı, güncel teknoloji ile donatılmış atölyemiz ve sertifikalı teknisyenlerimizle aracınızın performansını en üst seviyede tutuyoruz.</p>
-                        
+                        <p class="text-xl text-gray-600 mb-8">Profesyonel ekibimiz ve modern ekipmanlarımızla aracınızın
+                            bakım ve onarım işlemlerini güvenle gerçekleştiriyoruz. Periyodik bakımdan büyük onarımlara
+                            kadar her türlü hizmet.</p>
+                        <p class="text-lg text-gray-600 mb-8">Orijinal yedek parça kullanımı, güncel teknoloji ile
+                            donatılmış atölyemiz ve sertifikalı teknisyenlerimizle aracınızın performansını en üst
+                            seviyede tutuyoruz.</p>
+
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg">
                                 <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Periyodik Bakım</h4>
@@ -1051,7 +1768,7 @@
                                 <p class="text-gray-600">Gaz dolumu, temizlik, onarım</p>
                             </div>
                         </div>
-                        
+
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg">
                                 <span class="w-4 h-4 rounded-full mr-4" style="background-color: var(--altin);"></span>
@@ -1077,9 +1794,11 @@
                 <div class="grid md:grid-cols-2 gap-16 items-center mb-32">
                     <div class="slide-in">
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Yedek Parça Satışı</h2>
-                        <p class="text-xl text-gray-600 mb-8">Geniş yedek parça stoğumuz ile tüm marka ve modeller için orijinal ve muadil parça seçenekleri sunuyoruz. Hızlı tedarik ve uygun fiyat garantisi.</p>
-                        <p class="text-lg text-gray-600 mb-8">Bosch, Valeo, Continental gibi dünya markalarının yanı sıra OEM parçalar da stoklarımızda. Online sipariş sistemi ile 24 saat hizmet veriyoruz.</p>
-                        
+                        <p class="text-xl text-gray-600 mb-8">Geniş yedek parça stoğumuz ile tüm marka ve modeller için
+                            orijinal ve muadil parça seçenekleri sunuyoruz. Hızlı tedarik ve uygun fiyat garantisi.</p>
+                        <p class="text-lg text-gray-600 mb-8">Bosch, Valeo, Continental gibi dünya markalarının yanı
+                            sıra OEM parçalar da stoklarımızda. Online sipariş sistemi ile 24 saat hizmet veriyoruz.</p>
+
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg">
                                 <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Motor Parçaları</h4>
@@ -1098,7 +1817,7 @@
                                 <p class="text-gray-600">Çamurluk, kapı, cam, ayna</p>
                             </div>
                         </div>
-                        
+
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg">
                                 <span class="w-4 h-4 rounded-full mr-4" style="background-color: var(--altin);"></span>
@@ -1118,31 +1837,30 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="text-center">
-                        <div class="image-placeholder w-full h-96 mb-6">
-                            <div>
-                                <p class="text-xl mb-4">🔩 YEDEK PARÇA RESMİ</p>
-                                <p class="text-base">Yedek parça deposu, raf sistemleri, katalog ve parça çeşitleri</p>
-                            </div>
+                    <div class="text-center self-center">
+                        <div class="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden mb-8">
+                            <img src="assets/img/otomotiv/yedek.jpg" alt="İnşaat"
+                                class="absolute inset-0 w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
 
                 <!-- Ekspertiz Hizmetleri -->
                 <div class="grid md:grid-cols-2 gap-16 items-center mb-32">
-                    <div class="text-center order-2 md:order-1">
-                        <div class="image-placeholder w-full h-96 mb-6">
-                            <div>
-                                <p class="text-xl mb-4">🔍 EKSPERTİZ RESMİ</p>
-                                <p class="text-base">Araç ekspertiz işlemi, detaylı inceleme ve raporlama süreci</p>
-                            </div>
+                    <div class="text-center self-center order-2 md:order-1">
+                        <div class="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden mb-8">
+                            <img src="assets/img/otomotiv/expert.jpg" alt="İnşaat"
+                                class="absolute inset-0 w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="slide-in order-1 md:order-2">
                         <h2 class="text-5xl font-bold mb-8" style="color: var(--antrasit);">Ekspertiz Hizmetleri</h2>
-                        <p class="text-xl text-gray-600 mb-8">Profesyonel ekspertiz hizmetimizle araç alım-satımında güvenli işlem yapın. Detaylı inceleme ve objektif değerlendirme ile doğru karar verin.</p>
-                        <p class="text-lg text-gray-600 mb-8">Sertifikalı ekspertizlerimiz, modern test cihazları kullanarak aracın tüm sistemlerini kontrol eder. Detaylı rapor ile aracın gerçek durumunu öğrenin.</p>
-                        
+                        <p class="text-xl text-gray-600 mb-8">Profesyonel ekspertiz hizmetimizle araç alım-satımında
+                            güvenli işlem yapın. Detaylı inceleme ve objektif değerlendirme ile doğru karar verin.</p>
+                        <p class="text-lg text-gray-600 mb-8">Sertifikalı ekspertizlerimiz, modern test cihazları
+                            kullanarak aracın tüm sistemlerini kontrol eder. Detaylı rapor ile aracın gerçek durumunu
+                            öğrenin.</p>
+
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg">
                                 <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Alım Ekspertizi</h4>
@@ -1157,11 +1875,12 @@
                                 <p class="text-gray-600">Kaza sonrası hasar değerlendirme</p>
                             </div>
                             <div class="bg-white p-6 rounded-xl shadow-lg">
-                                <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Sigorta Ekspertizi</h4>
+                                <h4 class="font-bold text-lg mb-2" style="color: var(--antrasit);">Sigorta Ekspertizi
+                                </h4>
                                 <p class="text-gray-600">Sigorta şirketleri için rapor</p>
                             </div>
                         </div>
-                        
+
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg">
                                 <span class="w-4 h-4 rounded-full mr-4" style="background-color: var(--altin);"></span>
@@ -1183,95 +1902,12 @@
                     </div>
                 </div>
 
-                <!-- Otomotiv Galerisi -->
-                <div class="mb-20">
-                    <div class="text-center mb-16">
-                        <h2 class="text-5xl font-bold mb-6" style="color: var(--antrasit);">Hizmetlerimizden Kareler</h2>
-                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Otomotiv hizmetlerimiz ve memnun müşterilerimizden örnekler</p>
-                    </div>
-                    
-                    <div class="gallery-grid">
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">🚗 SATIŞ GALERİSİ</p>
-                                    <p class="text-sm">Modern showroom ve araç sergileme</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Satış Galerimiz</h3>
-                                <p class="text-gray-600">200+ araç kapasiteli modern galeri, tüm markalar</p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">🔧 SERVİS ALANI</p>
-                                    <p class="text-sm">Modern lift sistemli atölye</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Servis Atölyemiz</h3>
-                                <p class="text-gray-600">10 lift kapasiteli, son teknoloji ekipman</p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">🔩 PARÇA DEPOSU</p>
-                                    <p class="text-sm">Organize yedek parça deposu</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Yedek Parça Deposu</h3>
-                                <p class="text-gray-600">10.000+ parça çeşidi, hızlı tedarik sistemi</p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">🔍 EKSPERTİZ</p>
-                                    <p class="text-sm">Profesyonel araç değerlendirme</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Ekspertiz Hizmeti</h3>
-                                <p class="text-gray-600">Sertifikalı ekspertizler, detaylı raporlama</p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">🏆 ÖDÜL TÖRENİ</p>
-                                    <p class="text-sm">Müşteri memnuniyeti ödülü</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Başarılarımız</h3>
-                                <p class="text-gray-600">Sektör ödülleri ve müşteri memnuniyeti</p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            <div class="image-placeholder h-64">
-                                <div>
-                                    <p class="text-lg mb-2">👥 EKİP FOTOĞRAFI</p>
-                                    <p class="text-sm">Uzman teknisyen ekibimiz</p>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2" style="color: var(--antrasit);">Uzman Ekibimiz</h3>
-                                <p class="text-gray-600">25+ deneyimli teknisyen ve satış danışmanı</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </section>
+
+
+
     </div>
 
     <!-- İletişim Sayfası KALDIRILDI: içerik ana sayfaya taşındı -->
@@ -1384,13 +2020,13 @@
                 if (menu) menu.classList.add('hidden');
             }, 0);
         }
-        function showPage(pageId) {
+        function showPage(pageId, push = true) {
             // Tüm sayfaları gizle
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => {
                 page.classList.remove('active');
             });
-            
+
             // Seçilen sayfayı göster
             const activeLink = document.querySelectorAll('a[data-page]');
             activeLink.forEach(link => {
@@ -1403,13 +2039,40 @@
             });
 
             document.getElementById(pageId).classList.add('active');
-            
+
             // Mobil menüyü kapat
-            document.getElementById('mobile-menu').classList.add('hidden');
-            
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) mobileMenu.classList.add('hidden');
+
             // Sayfanın başına scroll yap
             window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // ✅ Tarayıcı geçmişine ekle (geri tuşu için)
+            if (push) {
+                history.pushState({ pageId }, '', '#' + pageId);
+            }
         }
+
+        // ✅ Geri tuşunu dinle
+        window.addEventListener('popstate', (event) => {
+            if (event.state && event.state.pageId) {
+                showPage(event.state.pageId, false);
+            } else {
+                // Varsayılan sayfayı göster (örneğin ana sayfa)
+                showPage('home', false);
+            }
+        });
+
+        // ✅ Sayfa yenilendiğinde hash’e göre aç
+        window.addEventListener('load', () => {
+            const hash = location.hash.replace('#', '');
+            if (hash) {
+                showPage(hash, false);
+            } else {
+                showPage('home', false); // Varsayılan sayfa id’sini kendine göre değiştir
+            }
+        });
+
 
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
@@ -1422,25 +2085,25 @@
         }
 
         function handleSubmit(event) {
-          event.preventDefault();
-          
-          // Formdaki verileri al
-          const name = document.getElementById("name").value.trim();
-          const message = document.getElementById("message").value.trim();
-      
-          // Kendi numaranı yaz (örnek: 905321234567)
-          const phoneNumber = "905459685329";
-      
-          // Mesajı WhatsApp formatına çevir
-          const whatsappMessage = `Ad Soyad: ${name}\nMesaj: ${message}`;
-          const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-      
-          // Yeni sekmede WhatsApp'ı aç
-          window.open(whatsappUrl, "_blank");
+            event.preventDefault();
+
+            // Formdaki verileri al
+            const name = document.getElementById("name").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            // Kendi numaranı yaz (örnek: 905321234567)
+            const phoneNumber = "905459685329";
+
+            // Mesajı WhatsApp formatına çevir
+            const whatsappMessage = `Ad Soyad: ${name}\nMesaj: ${message}`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+            // Yeni sekmede WhatsApp'ı aç
+            window.open(whatsappUrl, "_blank");
         }
 
         // Sayfa yüklendiğinde animasyonları başlat
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const elements = document.querySelectorAll('.fade-in, .slide-in');
             elements.forEach((element, index) => {
                 setTimeout(() => {
@@ -1451,12 +2114,12 @@
         });
 
         // Scroll animasyonları
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const elements = document.querySelectorAll('.fade-in, .slide-in');
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
-                
+
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0) translateX(0)';
@@ -1465,4 +2128,5 @@
         });
     </script>
 </body>
+
 </html>
