@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hitit Group - İnşaat, Mobilya & Otomotiv</title>
+    <link rel="icon" type="image/jpeg" href="assets/img/logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -180,49 +181,49 @@
     <header class="fixed w-full top-0 z-50 transition-all duration-300" style="background-color: var(--antrasit);">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <div class="text-3xl font-bold" style="color: var(--altin);">Hitit GROUP</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" data-page="home" onclick="showPage('home'); return false;"
-                        class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Ana
-                        Sayfa</a>
-                    <a href="#" onclick="scrollToSection('hizmetlerimiz'); return false;"
-                        class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Hizmetlerimiz</a>
-                    <a href="#" onclick="scrollToSection('neden-biz'); return false;"
-                        class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Neden
-                        Biz</a>
-                    <a href="#" onclick="scrollToSection('biz-kimiz'); return false;"
-                        class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Biz
-                        Kimiz</a>
-                    <!--      <a href="#" data-page="construction" onclick="showPage('construction'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">İnşaat</a>
-                    <a href="#" data-page="furniture" onclick="showPage('furniture'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Mobilya</a>
-                    <a href="#" data-page="automotive" onclick="showPage('automotive'); return false;" class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Otomotiv</a> -->
-                    <a href="#" onclick="scrollToSection('iletisim'); return false;"
-                        class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">İletişim</a>
-                </div>
-                <button class="md:hidden text-white" onclick="toggleMenu()" aria-controls="mobile-menu"
-                    aria-expanded="false">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+              <!-- Sol taraf: Logo + Yazı -->
+              <div class="flex items-center space-x-3">
+                <img src="assets/img/logo.jpg" alt="Hitit Group Logo" class="w-10 h-10 object-contain ">
+                <div class="text-3xl font-bold" style="color: var(--altin);">HİTİT GROUP</div>
+              </div>
+          
+              <!-- Menü -->
+              <div class="hidden md:flex space-x-8">
                 <a href="#" data-page="home" onclick="showPage('home'); return false;"
-                    class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Ana Sayfa</a>
+                  class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Ana Sayfa</a>
                 <a href="#" onclick="scrollToSection('hizmetlerimiz'); return false;"
-                    class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Hizmetlerimiz</a>
+                  class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Hizmetlerimiz</a>
                 <a href="#" onclick="scrollToSection('neden-biz'); return false;"
-                    class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Neden Biz</a>
+                  class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Neden Biz</a>
                 <a href="#" onclick="scrollToSection('biz-kimiz'); return false;"
-                    class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Biz Kimiz</a>
-                <!--        <a href="#" data-page="construction" onclick="showPage('construction'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">İnşaat</a>
-                <a href="#" data-page="furniture" onclick="showPage('furniture'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Mobilya</a>
-                <a href="#" data-page="automotive" onclick="showPage('automotive'); return false;" class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Otomotiv</a> -->
+                  class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Biz Kimiz</a>
                 <a href="#" onclick="scrollToSection('iletisim'); return false;"
-                    class="nav-link block text-white hover:text-[color:var(--altin)] py-2">İletişim</a>
+                  class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">İletişim</a>
+              </div>
+          
+              <!-- Mobil Menü Butonu -->
+              <button class="md:hidden text-white" onclick="toggleMenu()" aria-controls="mobile-menu" aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
             </div>
-        </nav>
+          
+            <!-- Mobil Menü -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+              <a href="#" data-page="home" onclick="showPage('home'); return false;"
+                class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Ana Sayfa</a>
+              <a href="#" onclick="scrollToSection('hizmetlerimiz'); return false;"
+                class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Hizmetlerimiz</a>
+              <a href="#" onclick="scrollToSection('neden-biz'); return false;"
+                class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Neden Biz</a>
+              <a href="#" onclick="scrollToSection('biz-kimiz'); return false;"
+                class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Biz Kimiz</a>
+              <a href="#" onclick="scrollToSection('iletisim'); return false;"
+                class="nav-link block text-white hover:text-[color:var(--altin)] py-2">İletişim</a>
+            </div>
+          </nav>
     </header>
 
     <!-- Ana Sayfa -->
