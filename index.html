@@ -191,8 +191,39 @@
               <div class="hidden md:flex space-x-8">
                 <a href="#" data-page="home" onclick="showPage('home'); return false;"
                   class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Ana Sayfa</a>
-                <a href="#" onclick="scrollToSection('hizmetlerimiz'); return false;"
-                  class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Hizmetlerimiz</a>
+                
+                <!-- Hizmetlerimiz Dropdown -->
+                <div class="relative group">
+                  <a href="#" onclick="scrollToSection('hizmetlerimiz'); return false;"
+                    class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2 flex items-center">
+                    Hizmetlerimiz
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </a>
+                  <!-- Dropdown Menu -->
+                  <div class="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 -translate-y-2">
+                    <div class="rounded-lg shadow-xl overflow-hidden" style="background-color: var(--antrasit);">
+                      <a href="#" data-page="construction" onclick="showPage('construction'); return false;"
+                        class="block px-6 py-3 text-white hover:text-[color:var(--altin)] hover:bg-gray-700 transition duration-300 border-b border-gray-700">
+                        İnşaat
+                      </a>
+                      <a href="#" data-page="furniture" onclick="showPage('furniture'); return false;"
+                        class="block px-6 py-3 text-white hover:text-[color:var(--altin)] hover:bg-gray-700 transition duration-300 border-b border-gray-700">
+                        Mobilya
+                      </a>
+                      <a href="#" data-page="realestate" onclick="showPage('automotive'); return false;"
+                        class="block px-6 py-3 text-white hover:text-[color:var(--altin)] hover:bg-gray-700 transition duration-300 border-b border-gray-700">
+                        Gayrimenkul
+                      </a>
+                      <a href="#" data-page="automotive" onclick="showPage('automotive'); return false;"
+                        class="block px-6 py-3 text-white hover:text-[color:var(--altin)] hover:bg-gray-700 transition duration-300">
+                         Karaciğer
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                
                 <a href="#" onclick="scrollToSection('neden-biz'); return false;"
                   class="nav-link text-white hover:text-[color:var(--altin)] transition duration-300 px-4 py-2">Neden Biz</a>
                 <a href="#" onclick="scrollToSection('biz-kimiz'); return false;"
@@ -214,8 +245,36 @@
             <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
               <a href="#" data-page="home" onclick="showPage('home'); return false;"
                 class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Ana Sayfa</a>
-              <a href="#" onclick="scrollToSection('hizmetlerimiz'); return false;"
-                class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Hizmetlerimiz</a>
+              
+              <!-- Mobil Hizmetlerimiz Dropdown -->
+              <div>
+                <a href="#" onclick="scrollToSection('hizmetlerimiz'); toggleMobileSubmenu(); return false;"
+                  class="nav-link block text-white hover:text-[color:var(--altin)] py-2 flex justify-between items-center">
+                  Hizmetlerimiz
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </a>
+                <div id="mobile-submenu" class="hidden pl-4 space-y-2 mt-2">
+                  <a href="#" data-page="construction" onclick="showPage('construction'); return false;"
+                    class="block text-white hover:text-[color:var(--altin)] py-2">
+                    İnşaat
+                  </a>
+                  <a href="#" data-page="furniture" onclick="showPage('furniture'); return false;"
+                    class="block text-white hover:text-[color:var(--altin)] py-2">
+                    Mobilya
+                  </a>
+                  <a href="#" data-page="realestate" onclick="showPage('automotive'); return false;"
+                    class="block text-white hover:text-[color:var(--altin)] py-2">
+                    Gayrimenkul
+                  </a>
+                  <a href="#" data-page="automotive" onclick="showPage('automotive'); return false;"
+                    class="block text-white hover:text-[color:var(--altin)] py-2">
+                    Otomotiv
+                  </a>
+                </div>
+              </div>
+              
               <a href="#" onclick="scrollToSection('neden-biz'); return false;"
                 class="nav-link block text-white hover:text-[color:var(--altin)] py-2">Neden Biz</a>
               <a href="#" onclick="scrollToSection('biz-kimiz'); return false;"
@@ -1883,6 +1942,14 @@
 
     </div>
 
+
+
+    <!-- Karaciğer Sayfası -->
+    <div id="ciger" class="page">
+
+
+
+    </div>
     <!-- İletişim Sayfası KALDIRILDI: içerik ana sayfaya taşındı -->
     <!--
     <div id="contact" class="page">
