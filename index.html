@@ -10,8 +10,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        body {
+        * {
             box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px !important; /* Root font size sabitlendi */
+        }
+
+        body {
+            font-size: 1.125rem !important; /* 18px - rem olarak daha stabil */
         }
 
         :root {
@@ -175,32 +183,31 @@
         }
 
         /* Overlapping Gallery Styles */
-        /* Custom Scrollbar - İnce ve Şık */
-        .custom-scrollbar::-webkit-scrollbar {
-            height: 8px; /* İnce scrollbar */
+        /* Custom Scrollbar - İnce ve Zarif */
+        .scrollbar-hide::-webkit-scrollbar {
+            height:12px; /* ince scrollbar */
         }
 
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.05); /* Hafif gri arka plan */
+        .scrollbar-hide::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05); /* çok hafif gri arka plan */
             border-radius: 10px;
-            margin: 0 20px; /* Yanlarda biraz boşluk */
+            margin: 0 20px; /* yanlardan boşluk */
         }
 
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: linear-gradient(90deg, var(--altin), #d4a574); /* Altın gradient */
+        .scrollbar-hide::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, var(--altin), #d4af37); /* altın gradient */
             border-radius: 10px;
             transition: all 0.3s ease;
         }
 
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(90deg, #d4a574, var(--altin)); /* Hover'da renk değişimi */
+        .scrollbar-hide::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(90deg, #b8860b, var(--altin)); /* hover'da daha koyu */
             transform: scaleY(1.2);
         }
 
-        /* Firefox için */
-        .custom-scrollbar {
-            scrollbar-width: thin;
-            scrollbar-color: var(--altin) rgba(0, 0, 0, 0.05);
+        .scrollbar-hide {
+            scrollbar-width: thin; /* Firefox için ince scrollbar */
+            scrollbar-color: var(--altin) rgba(0, 0, 0, 0.05); /* Firefox renkleri */
         }
 
         .overlapping-card {
@@ -1009,65 +1016,91 @@
             <div class="mb-20">
                 <div class="text-center mb-16">
                     <h2 class="text-5xl font-bold mb-6" style="color: var(--antrasit);">Tamamlanan Projelerimiz</h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Son 5 yılda tamamladığımız başarılı inşaat
-                        projelerinden örnekler. Detayları görmek için projelere tıklayın.</p>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Yeni inşaat projeleri ve güçlendirme çalışmalarından oluşan başarılı projelerimiz. Detayları görmek için projelere tıklayın.</p>
                 </div>
 
                 <!-- Horizontal Overlapping Gallery -->
-                <div class="overflow-x-auto p-20 custom-scrollbar" style="padding: 3%; ">
-                    <div class="flex items-center" style="padding: 3%; width: 100%;">
+                <div class="overflow-x-auto p-20 scrollbar-hide" >
+                    <div class="flex items-center" style="overflow: auto; padding: 5%; width: 100%;">
                         
-                        <!-- Proje 1: Zekeriyaköy Villa -->
+                        <!-- Proje 1: Detay Park Sitesi -->
                         <div class="overlapping-card" onclick="openProjectModal(0)">
-                            <img src="assets/img/insaat/projects/1.jpg" alt="Zekeriyaköy Villa">
+                            <img src="assets/img/insaat/projects/1.jpg" alt="Detay Park Sitesi">
                             <div class="project-overlay">
-                                <h3>Zekeriyaköy Villa</h3>
-                                <p>Modern mimari, akıllı ev sistemleri</p>
+                                <h3>Detay Park Sitesi</h3>
+                                <p>2 blok, 84 daire - Geniş 4+1 daireler</p>
                             </div>
                         </div>
 
-                        <!-- Proje 2: Maslak İş Merkezi -->
+                        <!-- Proje 2: Detaykent Sitesi -->
                         <div class="overlapping-card" onclick="openProjectModal(1)" style="margin-left: -8%;">
-                            <img src="assets/img/insaat/projects/2.jpg" alt="Maslak İş Merkezi">
+                            <img src="assets/img/insaat/projects/2.jpg" alt="Detaykent Sitesi">
                             <div class="project-overlay">
-                                <h3>Maslak İş Merkezi</h3>
-                                <p>LEED Gold sertifikalı, 15 kat</p>
+                                <h3>Detaykent Sitesi</h3>
+                                <p>2 blok, 80 daire - 3+1 ve 4+1 seçenekleri</p>
                             </div>
                         </div>
 
-                        <!-- Proje 3: Kadıköy Rezidans -->
+                        <!-- Proje 3: Detay Hayat Sitesi -->
                         <div class="overlapping-card" onclick="openProjectModal(2)" style="margin-left: -8%;">
-                            <img src="assets/img/insaat/projects/3.jpg" alt="Kadıköy Rezidans">
+                            <img src="assets/img/insaat/projects/3.jpg" alt="Detay Hayat Sitesi">
                             <div class="project-overlay">
-                                <h3>Kadıköy Rezidans</h3>
-                                <p>32 daire, spor salonu, güvenlik</p>
+                                <h3>Detay Hayat Sitesi</h3>
+                                <p>1 blok, 21 daire, 4 dükkan - Butik proje</p>
                             </div>
                         </div>
 
-                        <!-- Proje 4: Gebze Üretim Tesisi -->
+                        <!-- Proje 4: Detay Tecde -->
                         <div class="overlapping-card" onclick="openProjectModal(3)" style="margin-left: -8%;">
-                            <img src="assets/img/insaat/projects/4.jpg" alt="Gebze Üretim Tesisi">
+                            <img src="assets/img/insaat/projects/4.jpg" alt="Detay Tecde">
                             <div class="project-overlay">
-                                <h3>Gebze Üretim Tesisi</h3>
-                                <p>10.000m² kapalı alan</p>
+                                <h3>Detay Tecde</h3>
+                                <p>16 daire, 2 dükkan - 4+1 konsept</p>
                             </div>
                         </div>
 
-                        <!-- Proje 5: Antalya Butik Otel -->
+                        <!-- Proje 5: Sevgi Safir Evleri -->
                         <div class="overlapping-card" onclick="openProjectModal(4)" style="margin-left: -8%;">
-                            <img src="assets/img/insaat/projects/5.jpg" alt="Antalya Butik Otel">
+                            <img src="assets/img/insaat/projects/5.jpg" alt="Sevgi Safir Evleri">
                             <div class="project-overlay">
-                                <h3>Antalya Butik Otel</h3>
-                                <p>50 oda, spa merkezi, restoran</p>
+                                <h3>Sevgi Safir Evleri</h3>
+                                <p>40 daire - Güçlendirme ve yenileme</p>
                             </div>
                         </div>
 
-                        <!-- Proje 6: Nişantaşı Showroom -->
-                        <div class="overlapping-card" onclick="openProjectModal(5)" style="margin-left: -8%; margin-right: 3%;">
-                            <img src="assets/img/insaat/projects/6.jpg" alt="Nişantaşı Showroom">
+                        <!-- Proje 6: Sarayiçi Konutları -->
+                        <div class="overlapping-card" onclick="openProjectModal(5)" style="margin-left: -8%;">
+                            <img src="assets/img/insaat/projects/6.jpg" alt="Sarayiçi Konutları">
                             <div class="project-overlay">
-                                <h3>Nişantaşı Showroom</h3>
-                                <p>3 katlı mağaza, modern tasarım</p>
+                                <h3>Sarayiçi Konutları</h3>
+                                <p>92 daire - Yapısal güçlendirme</p>
+                            </div>
+                        </div>
+
+                        <!-- Proje 7: Hanedan 8 Sitesi -->
+                        <div class="overlapping-card" onclick="openProjectModal(6)" style="margin-left: -8%;">
+                            <img src="assets/img/insaat/projects/1.jpg" alt="Hanedan 8 Sitesi">
+                            <div class="project-overlay">
+                                <h3>Hanedan 8 Sitesi</h3>
+                                <p>16 daire - Taşıyıcı sistem güçlendirmesi</p>
+                            </div>
+                        </div>
+
+                        <!-- Proje 8: Arma Hayat Sitesi -->
+                        <div class="overlapping-card" onclick="openProjectModal(7)" style="margin-left: -8%;">
+                            <img src="assets/img/insaat/projects/2.jpg" alt="Arma Hayat Sitesi">
+                            <div class="project-overlay">
+                                <h3>Arma Hayat Sitesi</h3>
+                                <p>5 blok - Güçlendirme ve cephe iyileştirmesi</p>
+                            </div>
+                        </div>
+
+                        <!-- Proje 9: Elif Apartmanı -->
+                        <div class="overlapping-card" onclick="openProjectModal(8)" style="margin-left: -8%; margin-right: 3%;">
+                            <img src="assets/img/insaat/projects/3.jpg" alt="Elif Apartmanı">
+                            <div class="project-overlay">
+                                <h3>Elif Apartmanı</h3>
+                                <p>14 daire - Kolon güçlendirmesi ve yenileme</p>
                             </div>
                         </div>
 
@@ -1112,6 +1145,99 @@
                 </div>
             </div>
         </section>
+
+        <section class="py-20" style="background-color: #f8f9fa;">
+
+
+
+            <div class="mb-20">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold mb-6" style="color: var(--antrasit);">Devam Eden Projelerimiz</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Şu anda üzerinde çalıştığımız inşaat ve güçlendirme projeleri. Detayları görmek için projelere tıklayın.</p>
+                </div>
+
+                <!-- Horizontal Overlapping Gallery -->
+                <div class="overflow-x-auto p-20 scrollbar-hide" >
+                    <div class="flex items-center" style="overflow: auto; padding: 5%; width: 100%;">
+                        
+                        <!-- Proje 1: Detay Çilesiz -->
+                        <div class="overlapping-card" onclick="openOngoingProjectModal(0)">
+                            <img src="assets/img/insaat/projects/4.jpg" alt="Detay Çilesiz">
+                            <div class="project-overlay">
+                                <h3>Detay Çilesiz</h3>
+                                <p>36 daire - Geniş 4+1 daireler, yapım aşamasında</p>
+                            </div>
+                        </div>
+
+                        <!-- Proje 2: Vifak Sitesi -->
+                        <div class="overlapping-card" onclick="openOngoingProjectModal(1)" style="margin-left: 5%;">
+                            <img src="assets/img/insaat/projects/5.jpg" alt="Vifak Sitesi">
+                            <div class="project-overlay">
+                                <h3>Vifak Sitesi</h3>
+                                <p>14 daire - Güçlendirme ve onarım</p>
+                            </div>
+                        </div>
+
+                        <!-- Proje 3: RMZ Gold Sitesi -->
+                        <div class="overlapping-card" onclick="openOngoingProjectModal(2)" style="margin-left: 5%; ">
+                            <img src="assets/img/insaat/projects/6.jpg" alt="RMZ Gold Sitesi">
+                            <div class="project-overlay">
+                                <h3>RMZ Gold Sitesi</h3>
+                                <p>40 daire - Taşıyıcı sistem yenilemesi</p>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Ongoing Project Modal -->
+            <div id="ongoingProjectModal" class="project-modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeOngoingProjectModal()">&times;</span>
+                    
+                    <div class="modal-body">
+                        <div class="project-slider-container">
+                            <button class="slider-btn prev-btn" onclick="changeOngoingSlide(-1)">
+                                <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                                </svg>
+                            </button>
+                            
+                            <div class="project-slider" id="ongoingProjectSlider">
+                                <!-- Slides will be inserted here by JavaScript -->
+                            </div>
+
+                            <button class="slider-btn next-btn" onclick="changeOngoingSlide(1)">
+                                <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                                    <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="project-info" id="ongoingProjectInfo">
+                            <!-- Project info will be inserted here -->
+                        </div>
+
+                        <div class="slider-dots" id="ongoingSliderDots">
+                            <!-- Dots will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
     </div>
 
     <!-- Mobilya Sayfası -->
@@ -2542,8 +2668,8 @@
         // Project Gallery Modal System
         const projects = [
             {
-                name: "Zekeriyaköy Villa",
-                description: "Modern mimari anlayışla tasarlanmış 4+1 lüks villa projesi. Akıllı ev sistemleri, bahçe düzenlemesi ve özel havuz tasarımı ile hayalinizdeki yaşam alanı.",
+                name: "Detay Park Sitesi",
+                description: "2 bloktan oluşan, 84 dairelik modern bir yaşam alanı. Geniş 4+1 daireleriyle ferah ve konforlu bir yaşam sunar.",
                 images: [
                     "assets/img/insaat/projects/1.jpg",
                     "assets/img/insaat/projects/1.jpg",
@@ -2551,8 +2677,8 @@
                 ]
             },
             {
-                name: "Maslak İş Merkezi",
-                description: "LEED Gold sertifikalı, çevre dostu 15 katlı iş merkezi. 200 ofis, kapalı otopark ve sosyal alanlar ile modern iş hayatının merkezi.",
+                name: "Detaykent Sitesi",
+                description: "2 blok, toplam 80 daire. 3+1 ve 4+1 seçenekleriyle aile yaşamına uygun çağdaş mimari.",
                 images: [
                     "assets/img/insaat/projects/2.jpg",
                     "assets/img/insaat/projects/2.jpg",
@@ -2560,8 +2686,8 @@
                 ]
             },
             {
-                name: "Kadıköy Rezidans",
-                description: "32 daireli modern rezidans projesi. Spor salonu, çocuk parkı, 7/24 güvenlik ve sosyal tesisler ile konforlu yaşam.",
+                name: "Detay Hayat Sitesi",
+                description: "1 blokta 21 daire ve 4 dükkandan oluşan butik proje. Estetik cephe tasarımı ve merkezi konumuyla dikkat çeker.",
                 images: [
                     "assets/img/insaat/projects/3.jpg",
                     "assets/img/insaat/projects/3.jpg",
@@ -2569,8 +2695,8 @@
                 ]
             },
             {
-                name: "Gebze Üretim Tesisi",
-                description: "10.000m² kapalı alan üzerine kurulu modern üretim tesisi. Ofis binası, yemekhane ve sosyal tesisler dahil tam entegre tesis.",
+                name: "Detay Tecde",
+                description: "16 daire ve 2 dükkandan oluşan, kullanışlı 4+1 daire konsepti. Kaliteli malzeme ve modern detaylarla inşa edilmiştir.",
                 images: [
                     "assets/img/insaat/projects/4.jpg",
                     "assets/img/insaat/projects/4.jpg",
@@ -2578,8 +2704,8 @@
                 ]
             },
             {
-                name: "Antalya Butik Otel",
-                description: "50 odalı butik otel projesi. Spa merkezi, restoran alanları ve muhteşem deniz manzarası ile unutulmaz bir tatil deneyimi.",
+                name: "Sevgi Safir Evleri",
+                description: "40 dairelik yapı, kapsamlı güçlendirme ve yenileme çalışmalarıyla modernleştirildi.",
                 images: [
                     "assets/img/insaat/projects/5.jpg",
                     "assets/img/insaat/projects/5.jpg",
@@ -2587,8 +2713,66 @@
                 ]
             },
             {
-                name: "Nişantaşı Showroom",
-                description: "3 katlı lüks mağaza projesi. Modern tasarım, VIP alanlar ve özel sergileme alanları ile prestij ve şıklık bir arada.",
+                name: "Sarayiçi Konutları",
+                description: "92 dairelik sitede yapısal dayanıklılık ve estetik yenileme tamamlandı.",
+                images: [
+                    "assets/img/insaat/projects/6.jpg",
+                    "assets/img/insaat/projects/6.jpg",
+                    "assets/img/insaat/projects/6.jpg"
+                ]
+            },
+            {
+                name: "Hanedan 8 Sitesi",
+                description: "16 dairede taşıyıcı sistem güçlendirmesi ve iç cephe yenilemesi gerçekleştirildi.",
+                images: [
+                    "assets/img/insaat/projects/1.jpg",
+                    "assets/img/insaat/projects/1.jpg",
+                    "assets/img/insaat/projects/1.jpg"
+                ]
+            },
+            {
+                name: "Arma Hayat Sitesi",
+                description: "5 blokluk büyük projede güçlendirme ve cephe iyileştirmesi başarıyla tamamlandı.",
+                images: [
+                    "assets/img/insaat/projects/2.jpg",
+                    "assets/img/insaat/projects/2.jpg",
+                    "assets/img/insaat/projects/2.jpg"
+                ]
+            },
+            {
+                name: "Elif Apartmanı",
+                description: "14 dairelik apartmanda kapsamlı kolon güçlendirmesi ve iç yenileme yapıldı.",
+                images: [
+                    "assets/img/insaat/projects/3.jpg",
+                    "assets/img/insaat/projects/3.jpg",
+                    "assets/img/insaat/projects/3.jpg"
+                ]
+            }
+        ];
+
+        // Ongoing Projects (Devam Eden Projeler)
+        const ongoingProjects = [
+            {
+                name: "Detay Çilesiz",
+                description: "36 dairelik yeni nesil konut projesi. Geniş 4+1 daireleri, modern mimarisi ve merkezi konumuyla yapım aşamasında.",
+                images: [
+                    "assets/img/insaat/projects/4.jpg",
+                    "assets/img/insaat/projects/4.jpg",
+                    "assets/img/insaat/projects/4.jpg"
+                ]
+            },
+            {
+                name: "Vifak Sitesi",
+                description: "14 dairelik binada güçlendirme ve onarım çalışmaları sürüyor.",
+                images: [
+                    "assets/img/insaat/projects/5.jpg",
+                    "assets/img/insaat/projects/5.jpg",
+                    "assets/img/insaat/projects/5.jpg"
+                ]
+            },
+            {
+                name: "RMZ Gold Sitesi",
+                description: "40 dairelik yapıda taşıyıcı sistem yenilemesi ve genel bakım çalışmaları devam ediyor.",
                 images: [
                     "assets/img/insaat/projects/6.jpg",
                     "assets/img/insaat/projects/6.jpg",
@@ -2599,6 +2783,8 @@
 
         let currentProject = 0;
         let currentSlide = 0;
+        let currentOngoingProject = 0;
+        let currentOngoingSlide = 0;
 
         function openProjectModal(projectIndex) {
             currentProject = projectIndex;
@@ -2678,24 +2864,122 @@
             dots[currentSlide].classList.add('active');
         }
 
+        // Ongoing Projects Modal Functions
+        function openOngoingProjectModal(projectIndex) {
+            currentOngoingProject = projectIndex;
+            currentOngoingSlide = 0;
+            
+            const modal = document.getElementById('ongoingProjectModal');
+            const slider = document.getElementById('ongoingProjectSlider');
+            const projectInfo = document.getElementById('ongoingProjectInfo');
+            const sliderDots = document.getElementById('ongoingSliderDots');
+            
+            const project = ongoingProjects[projectIndex];
+            
+            // Clear previous content
+            slider.innerHTML = '';
+            sliderDots.innerHTML = '';
+            
+            // Add slides
+            project.images.forEach((image, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'slider-item' + (index === 0 ? ' active' : '');
+                slide.innerHTML = `<img src="${image}" alt="${project.name}">`;
+                slider.appendChild(slide);
+                
+                // Add dots
+                const dot = document.createElement('span');
+                dot.className = 'dot' + (index === 0 ? ' active' : '');
+                dot.onclick = () => goToOngoingSlide(index);
+                sliderDots.appendChild(dot);
+            });
+            
+            // Add project info
+            projectInfo.innerHTML = `
+                <h2>${project.name}</h2>
+                <p>${project.description}</p>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeOngoingProjectModal() {
+            const modal = document.getElementById('ongoingProjectModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeOngoingSlide(direction) {
+            const project = ongoingProjects[currentOngoingProject];
+            const modal = document.getElementById('ongoingProjectModal');
+            const slides = modal.querySelectorAll('.slider-item');
+            const dots = modal.querySelectorAll('.dot');
+            
+            slides[currentOngoingSlide].classList.remove('active');
+            dots[currentOngoingSlide].classList.remove('active');
+            
+            currentOngoingSlide += direction;
+            
+            if (currentOngoingSlide >= project.images.length) {
+                currentOngoingSlide = 0;
+            } else if (currentOngoingSlide < 0) {
+                currentOngoingSlide = project.images.length - 1;
+            }
+            
+            slides[currentOngoingSlide].classList.add('active');
+            dots[currentOngoingSlide].classList.add('active');
+        }
+
+        function goToOngoingSlide(slideIndex) {
+            const modal = document.getElementById('ongoingProjectModal');
+            const slides = modal.querySelectorAll('.slider-item');
+            const dots = modal.querySelectorAll('.dot');
+            
+            slides[currentOngoingSlide].classList.remove('active');
+            dots[currentOngoingSlide].classList.remove('active');
+            
+            currentOngoingSlide = slideIndex;
+            
+            slides[currentOngoingSlide].classList.add('active');
+            dots[currentOngoingSlide].classList.add('active');
+        }
+
         // Close modal on outside click
         window.onclick = function(event) {
-            const modal = document.getElementById('projectModal');
-            if (event.target === modal) {
+            const completedModal = document.getElementById('projectModal');
+            const ongoingModal = document.getElementById('ongoingProjectModal');
+            
+            if (event.target === completedModal) {
                 closeProjectModal();
+            }
+            if (event.target === ongoingModal) {
+                closeOngoingProjectModal();
             }
         }
 
         // Keyboard navigation
         document.addEventListener('keydown', function(event) {
-            const modal = document.getElementById('projectModal');
-            if (modal.classList.contains('active')) {
+            const completedModal = document.getElementById('projectModal');
+            const ongoingModal = document.getElementById('ongoingProjectModal');
+            
+            if (completedModal.classList.contains('active')) {
                 if (event.key === 'ArrowLeft') {
                     changeSlide(-1);
                 } else if (event.key === 'ArrowRight') {
                     changeSlide(1);
                 } else if (event.key === 'Escape') {
                     closeProjectModal();
+                }
+            }
+            
+            if (ongoingModal.classList.contains('active')) {
+                if (event.key === 'ArrowLeft') {
+                    changeOngoingSlide(-1);
+                } else if (event.key === 'ArrowRight') {
+                    changeOngoingSlide(1);
+                } else if (event.key === 'Escape') {
+                    closeOngoingProjectModal();
                 }
             }
         });
