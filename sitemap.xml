@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- Ana Sayfa -->
+    <url>
+        <loc>https://www.hititgrup.com/</loc>
+        <lastmod>2025-10-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Hizmetlerimiz Bölümü -->
+    <url>
+        <loc>https://www.hititgrup.com/#hizmetlerimiz</loc>
+        <lastmod>2025-10-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Biz Kimiz Bölümü -->
+    <url>
+        <loc>https://www.hititgrup.com/#biz-kimiz</loc>
+        <lastmod>2025-10-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- İnşaat Hizmetleri -->
+    <url>
+        <loc>https://www.hititgrup.com/#insaat</loc>
+        <lastmod>2025-10-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Mobilya Hizmetleri -->
+    <url>
+        <loc>https://www.hititgrup.com/#mobilya</loc>
+        <lastmod>2025-10-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Gayrimenkul Hizmetleri -->
+    <url>
+        <loc>https://www.hititgrup.com/#gayrimenkul</loc>
+        <lastmod>2025-10-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Otomotiv Hizmetleri -->
+    <url>
+        <loc>https://www.hititgrup.com/#otomotiv</loc>
+        <lastmod>2025-10-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- İletişim Bölümü -->
+    <url>
+        <loc>https://www.hititgrup.com/#iletisim</loc>
+        <lastmod>2025-10-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+</urlset>
+
